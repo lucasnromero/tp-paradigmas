@@ -13,4 +13,10 @@ public class Atraccion extends Resumen {
 		this.tipoDeAtraccion = tipoDeAtraccion;
 	}
 
+	@Override
+	public String toString() {
+		return "Atraccion [id=" + id + ", tipoDeAtraccion=" + tipoDeAtraccion + ", nombre=" + nombre + ", costo="
+				+ costo + ", tiempo=" + tiempo + ", cupo=" + cupo + "]";
+	}
+
 }

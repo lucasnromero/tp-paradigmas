@@ -1,11 +1,9 @@
-import unlam.turismo.models.Atraccion;
-import unlam.turismo.models.TipoDeAtraccion;
+import unlam.turismo.consola.ManejoConsola;
 
 public class ApplicationMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		ManejoConsola.iniciarProcesamiento();
 	}
 
 }
