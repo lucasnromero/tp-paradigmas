@@ -1,5 +1,6 @@
 package unlam.turismo.manejoArchivo;
 
+import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +10,7 @@ import java.util.List;
 import unlam.turismo.models.Atraccion;
 import unlam.turismo.models.Promocion;
 import unlam.turismo.models.TipoDeAtraccion;
+import unlam.turismo.models.TipoDePromocion;
 
 public class Archivo {
 
@@ -74,21 +76,36 @@ public class Archivo {
 	
 	public List<Promocion> leerArchivoPromociones() {
 
-		List<Atraccion> listaAtracciones = new ArrayList<Atraccion>();
+		//id|nombre|costo|tiempo|2;1;4|tipodepromocion
+		List<Promocion> listaPromociones = new ArrayList<Promocion>();
 
 		BufferedReader bufferedReader = null;
 
 		try {
 
-			FileReader fileReader = new FileReader("archivos/in/" + this.nombreArchivo + ".in");
+			File archivo = new File("archivos/in/" + this.nombreArchivo + ".in");
+			
+			// Validar si el archivo no existe
+	        if (!archivo.exists()) {
+	            System.out.println("El archivo no existe."); //debería ser una excepcion
+	            return listaPromociones;
+	        }
+
+	        // Validar si el archivo está vacío
+	        if (archivo.length() == 0) {
+	            System.out.println("El archivo está vacío."); //debería ser una excepcion
+	            return listaPromociones;
+	        }
+	        
+	        FileReader fileReader = new FileReader(archivo);
 			bufferedReader = new BufferedReader(fileReader);
 
 			String linea;
 
 			while ((linea = bufferedReader.readLine()) != null) {
 
-				Atraccion atraccion = this.getAtraccionLeida(linea);
-				listaAtracciones.add(atraccion);
+				Promocion promocion = this.getPromocionLeida(linea);
+				listaPromociones.add(promocion);
 			}
 
 		} catch (FileNotFoundException fileNotFoundException) {
@@ -109,6 +126,30 @@ public class Archivo {
 			}
 		}
 
-		return listaAtracciones;
+		return listaPromociones;
+	}
+	
+	private Promocion getPromocionLeida(String lineaLeida) {
+
+		//id|nombre|costo|tiempo|2;1;4|tipodepromocion
+		
+		String[] partes = lineaLeida.split("\\|");
+
+		int idPromocion = Integer.parseInt(partes[0]);
+		String nombrePromocion = partes[1];
+		double costo = Double.parseDouble(partes[2]);
+		double tiempo = Double.parseDouble(partes[3]);
+		String atributos = partes[4];
+		TipoDePromocion tipoPromocion = TipoDePromocion.valueOf(partes[5]);
+
+		String[] listaAtributos = atributos.split(";");
+
+		List<Integer> idAtracciones= new ArrayList<Integer>();
+
+		for (int i = 0; i < listaAtributos.length; i++) {
+			idAtracciones.add(Integer.parseInt(listaAtributos[i]));
+		}
+
+		return new Promocion(nombrePromocion, costo, tiempo, 0, idPromocion, idAtracciones, tipoPromocion);
 	}
 }

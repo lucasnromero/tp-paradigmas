@@ -19,4 +19,5 @@ public class Promocion extends Resumen {
 		this.tipoDePromocion = tipoDePromocion;
 	}
 
+	
 }
