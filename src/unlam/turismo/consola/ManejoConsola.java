@@ -3,6 +3,11 @@ package unlam.turismo.consola;
 import unlam.turismo.models.Usuario;
 import unlam.turismo.sugerencia.Sugerencia;
 
+import java.util.List;
+
+import unlam.turismo.manejoArchivo.*;
+import unlam.turismo.models.*;
+
 public class ManejoConsola {
 
 	private Sugerencia sugerencia;
@@ -17,7 +22,14 @@ public class ManejoConsola {
 		
 		System.out.println("Bienvenido/a al Turismo en la Tierra Media");
 		
+		//PARA PROBAR LEER Y MOSTRAR ARCHIVO DE PROMOCIONES
+		Archivo archivoPromociones = new Archivo("promociones");
 		
+		List<Promocion> listaPromociones = archivoPromociones.leerArchivoPromociones();
+		
+		for (Promocion promocion : listaPromociones) {
+		    promocion.leerPromocion();
+		}
 		
 	}
 	
