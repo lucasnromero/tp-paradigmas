@@ -20,11 +20,22 @@ public class Sugerencia {
 		
 	}	
 	
-	public void addListaPromociones(Promocion promocion) {
-		this.listaPromociones.add(promocion);
+	public Sugerencia() {
+		
+	}
+	public void setListaPromociones(List<Promocion> promociones) {
+		this.listaPromociones = promociones;
 	}
 	
-	public void addListaAtracciones(Atraccion atraccion) {
-		this.listaAtracciones.add(atraccion);
+	public void setListaAtracciones(List<Atraccion> atracciones) {
+		this.listaAtracciones = atracciones;
+	}
+
+	public List<Promocion> getListaPromociones() {
+		return listaPromociones;
+	}
+	
+	public List<Atraccion> getListaAtracciones() {
+		return listaAtracciones;
 	}
 }

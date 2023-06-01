@@ -13,6 +13,7 @@ public class ManejoConsola {
 	private Sugerencia sugerencia;
 	private Usuario usuario;
 
+	//no entiendo esta clase
 	private ManejoConsola(Sugerencia sugerencia, Usuario usuario) {
 		this.sugerencia = sugerencia;
 		this.usuario = usuario;
@@ -22,13 +23,32 @@ public class ManejoConsola {
 		
 		System.out.println("Bienvenido/a al Turismo en la Tierra Media");
 		
-		//PARA PROBAR LEER Y MOSTRAR ARCHIVO DE PROMOCIONES
 		Archivo archivoPromociones = new Archivo("promociones");
+		Archivo archivoAtracciones = new Archivo("atracciones");
+		Archivo archivoUsuarios = new Archivo("usuarios");
 		
-		List<Promocion> listaPromociones = archivoPromociones.leerArchivoPromociones();
-		
-		for (Promocion promocion : listaPromociones) {
-		    promocion.leerPromocion();
+	    Sugerencia sugerencia = new Sugerencia();
+	    List<Usuario> usuarios = archivoUsuarios.leerArchivoUsuarios();
+
+	    sugerencia.setListaAtracciones(archivoAtracciones.leerArchivoAtracciones());
+	    sugerencia.setListaPromociones(archivoPromociones.leerArchivoPromociones());
+	    
+	    //PARA PROBAR LEER Y MOSTRAR ARCHIVO DE USUARIOS
+	    for(Usuario usuario: usuarios) {
+	    	usuario.leerUsuario();
+	    	System.out.println("\n");
+	    }
+	    
+	    //PARA PROBAR LEER Y MOSTRAR ARCHIVO DE ATRACCIONES
+	    for (Atraccion atraccion : sugerencia.getListaAtracciones()) {
+		    atraccion.leerAtraccion();
+		    System.out.println("\n");
+		}
+	    
+		//PARA PROBAR LEER Y MOSTRAR ARCHIVO DE PROMOCIONES
+		for (Promocion promocion : sugerencia.getListaPromociones()) {
+		    promocion.leerPromocion(sugerencia.getListaAtracciones());
+		    System.out.println("\n");
 		}
 		
 	}

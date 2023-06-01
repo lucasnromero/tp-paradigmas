@@ -18,5 +18,24 @@ public class Atraccion extends Resumen {
 		return "Atraccion [id=" + id + ", tipoDeAtraccion=" + tipoDeAtraccion + ", nombre=" + nombre + ", costo="
 				+ costo + ", tiempo=" + tiempo + ", cupo=" + cupo + "]";
 	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	public int getId() {
+		return this.id;
+	}
+	public double getCosto() {
+		return this.costo;
+	}
+	
+	public double getTiempo() {
+		return this.tiempo;
+	}
+	public void leerAtraccion() {
+		System.out.println("Nombre: " + "[" +this.nombre + "]");
+		System.out.println("- Precio: $" + this.costo);
+		System.out.println("- Duración: " +this.tiempo +" horas");
+	}
 
 }

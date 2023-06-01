@@ -9,6 +9,8 @@ public class Promocion extends Resumen {
 	private List<Integer> idAtracciones= new ArrayList<Integer>();
 	private TipoDePromocion tipoDePromocion;
 	
+	//DEFINIR COMO TRATAMOS LOS TIPOS DE PROMOCIONES Y EL COSTO
+	
 	public Promocion(String nombre, double costo, double tiempo, int cupo, int id, List<Integer> idAtracciones,
 			TipoDePromocion tipoDePromocion) {
 
@@ -50,13 +52,31 @@ public class Promocion extends Resumen {
 		return this.tiempo;
 	}
 	
-	public void leerPromocion() {
+	public void leerPromocion(List<Atraccion> listaAtracciones) {
 		
-			System.out.println("ID: " + getId() + "\n" 
-			+ "Costo: $" + getCosto()  + "\n"
-			+ "Tiempo: " + getTiempo()  + "\n"
-			+ "Tipo de promoción: " + getTipoDePromocion()  + "\n"
-			+ "IDs atracciones: " + getIdAtracciones()  + "\n");
+		double precioOriginal = 0;
+		double tiempoTotal = 0;
+		List<String> nombres = new ArrayList<String>();
+		
+		System.out.println("Promocion: " + getNombre());
+				
+		// Itera sobre los IDs
+		for (int id : this.idAtracciones) {
+		    // Busca la atracción con el ID correspondiente en la lista de atracciones
+		    for (Atraccion atraccion : listaAtracciones ) {
+		        if (atraccion.getId() == id) {
+		           nombres.add(atraccion.getNombre());
+		           precioOriginal += atraccion.getCosto();
+		           tiempoTotal += atraccion.getTiempo();
+		        }
+		    }
+		}
+		
+		System.out.println("- Atracciones incluidas: " + nombres);
+		System.out.println("- Duracion: " + tiempoTotal);
+		System.out.println("- Precio original: " + precioOriginal);
+		System.out.println("- Precio promocional: " + this.costo);
+
 			
 	}
 

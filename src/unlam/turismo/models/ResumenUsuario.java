@@ -35,11 +35,4 @@ public class ResumenUsuario {
 		return sugerenciasAceptadas;
 	}
 
-	public void setSugerenciasAceptadas(Promocion promocionAceptada) {
-		this.sugerenciasAceptadas.addListaPromociones(promocionAceptada);
-	}
-
-	public void setSugerenciasAceptadas(Atraccion atraccionAceptada) {
-		this.sugerenciasAceptadas.addListaAtracciones(atraccionAceptada);
-	}
 }

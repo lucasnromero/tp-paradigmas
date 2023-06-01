@@ -11,6 +11,7 @@ import unlam.turismo.models.Atraccion;
 import unlam.turismo.models.Promocion;
 import unlam.turismo.models.TipoDeAtraccion;
 import unlam.turismo.models.TipoDePromocion;
+import unlam.turismo.models.Usuario;
 
 public class Archivo {
 
@@ -72,6 +73,60 @@ public class Archivo {
 		int cupo = Integer.parseInt(partes[5]);
 
 		return new Atraccion(nombreAtraccion, costo, tiempo, cupo, idAtraccion, tipoAtraccion);
+	}
+	
+	public List<Usuario> leerArchivoUsuarios() {
+
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+		BufferedReader bufferedReader = null;
+
+		try {
+
+			FileReader fileReader = new FileReader("archivos/in/" + this.nombreArchivo + ".in");
+			bufferedReader = new BufferedReader(fileReader);
+
+			String linea;
+
+			while ((linea = bufferedReader.readLine()) != null) {
+
+				Usuario usuario = this.getUsuarioLeido(linea);
+				listaUsuarios.add(usuario);
+			}
+
+		} catch (FileNotFoundException fileNotFoundException) {
+
+			fileNotFoundException.printStackTrace();
+
+		} catch (IOException ioException) {
+
+			ioException.printStackTrace();
+		}
+
+		finally {
+
+			try {
+				bufferedReader.close();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
+			}
+		}
+
+		return listaUsuarios;
+	}
+
+	private Usuario getUsuarioLeido(String lineaLeida) {
+
+		//id|nombre|tipoDeAtraccion|presupuesto|tiempo
+		String[] partes = lineaLeida.split("\\|");
+
+		int idUsuario = Integer.parseInt(partes[0]);
+		String nombreUsuario = partes[1];
+		TipoDeAtraccion tipoAtraccion = TipoDeAtraccion.valueOf(partes[2]);
+		double presupuesto = Double.parseDouble(partes[3]);
+		double tiempo = Double.parseDouble(partes[4]);
+
+		return new Usuario(idUsuario, nombreUsuario, presupuesto, tiempo, tipoAtraccion, null);
 	}
 	
 	public List<Promocion> leerArchivoPromociones() {
@@ -138,9 +193,8 @@ public class Archivo {
 		int idPromocion = Integer.parseInt(partes[0]);
 		String nombrePromocion = partes[1];
 		double costo = Double.parseDouble(partes[2]);
-		double tiempo = Double.parseDouble(partes[3]);
-		String atributos = partes[4];
-		TipoDePromocion tipoPromocion = TipoDePromocion.valueOf(partes[5]);
+		String atributos = partes[3];
+		TipoDePromocion tipoPromocion = TipoDePromocion.valueOf(partes[4]);
 
 		String[] listaAtributos = atributos.split(";");
 
@@ -150,6 +204,6 @@ public class Archivo {
 			idAtracciones.add(Integer.parseInt(listaAtributos[i]));
 		}
 
-		return new Promocion(nombrePromocion, costo, tiempo, 0, idPromocion, idAtracciones, tipoPromocion);
+		return new Promocion(nombrePromocion, costo, 0, 0, idPromocion, idAtracciones, tipoPromocion);
 	}
 }
