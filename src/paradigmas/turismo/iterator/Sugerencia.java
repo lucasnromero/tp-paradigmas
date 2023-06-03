@@ -13,7 +13,7 @@ public class Sugerencia implements SugerenciaInterface {
 	private List<Atraccion> listaAtracciones;
 	private List<Promocion> listaPromociones;
 	private Usuario usuario;
-	private ResumenUsuario resumenUsuario;
+	private ResumenUsuario resumenUsuario; 
 
 	public Sugerencia(final List<Atraccion> listaAtracciones, final List<Promocion> listaPromociones,
 			final Usuario usuario, final ResumenUsuario resumenUsuario) {

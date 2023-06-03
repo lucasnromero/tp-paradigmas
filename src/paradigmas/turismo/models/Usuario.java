@@ -1,8 +1,5 @@
 package paradigmas.turismo.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Usuario {
 
 	private String nombreUsuario;

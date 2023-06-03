@@ -3,7 +3,6 @@ package paradigmas.turismo.iterator;
 import java.util.Collections;
 import java.util.List;
 
-import paradigmas.turismo.models.Atraccion;
 import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 
