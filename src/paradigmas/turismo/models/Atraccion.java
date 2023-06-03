@@ -52,9 +52,10 @@ public class Atraccion implements Comparable<Atraccion> {
 				+ "Duracion: " + this.promedioDeTiempo;
 	}
 
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(costoVisita, cupo, nombreAtraccion, promedioDeTiempo, tipoAtraccion);
+		return Objects.hash(costoVisita, nombreAtraccion, promedioDeTiempo, tipoAtraccion);
 	}
 
 	@Override
@@ -66,8 +67,7 @@ public class Atraccion implements Comparable<Atraccion> {
 		if (getClass() != obj.getClass())
 			return false;
 		Atraccion other = (Atraccion) obj;
-		return costoVisita == other.costoVisita && cupo == other.cupo
-				&& Objects.equals(nombreAtraccion, other.nombreAtraccion)
+		return costoVisita == other.costoVisita && Objects.equals(nombreAtraccion, other.nombreAtraccion)
 				&& Double.doubleToLongBits(promedioDeTiempo) == Double.doubleToLongBits(other.promedioDeTiempo)
 				&& Objects.equals(tipoAtraccion, other.tipoAtraccion);
 	}

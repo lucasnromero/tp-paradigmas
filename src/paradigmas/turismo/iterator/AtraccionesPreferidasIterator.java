@@ -66,7 +66,7 @@ public class AtraccionesPreferidasIterator implements AtraccionesPreferidasItera
 	private boolean yaEstabaEnUnPaqueteComprado(final Atraccion atraccion) {
 
 		List<Promocion> promocionesCompradas = this.resumenHastaElMomento.getPromocionesComparadas();
-		boolean estabaComparada = false;
+		boolean estabaComprada = false;
 
 		for (Promocion promocion : promocionesCompradas) {
 
@@ -74,9 +74,9 @@ public class AtraccionesPreferidasIterator implements AtraccionesPreferidasItera
 
 			for (Atraccion atraccionEnLaPromocion : atraccionesEnLaPromocion)
 				if (atraccionEnLaPromocion.equals(atraccion))
-					estabaComparada = true;
+					estabaComprada = true;
 		}
 
-		return estabaComparada;
+		return estabaComprada;
 	}
 }
