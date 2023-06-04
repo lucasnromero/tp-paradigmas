@@ -31,7 +31,7 @@ public class Sugerencia implements SugerenciaInterface {
 
 		List<Atraccion> listaAtraccionesDePreferencia = this.getAtraccionesDePreferencia();
 
-		return new AtraccionesPreferidasIterator(listaAtraccionesDePreferencia, this.usuario, this.resumenUsuario);
+		return new AtraccionesIterator(listaAtraccionesDePreferencia, this.usuario, this.resumenUsuario);
 	}
 
 	private List<Atraccion> getAtraccionesDePreferencia() {
@@ -53,7 +53,7 @@ public class Sugerencia implements SugerenciaInterface {
 
 		List<Promocion> listaPromocionesDePreferencia = this.getPromocionesDePreferencia();
 
-		return new PromocionesPreferidasIterator(listaPromocionesDePreferencia, this.usuario);
+		return new PromocionesIterator(listaPromocionesDePreferencia, this.usuario);
 	}
 
 	private List<Promocion> getPromocionesDePreferencia() {
@@ -74,7 +74,7 @@ public class Sugerencia implements SugerenciaInterface {
 		
 		List<Atraccion> listaAtraccionesDeNoPreferencia = this.getAtraccionesDeNoPreferencia();
 		
-		return new AtraccionesNoPreferidasIterator(listaAtraccionesDeNoPreferencia, this.usuario, this.resumenUsuario);
+		return new AtraccionesIterator(listaAtraccionesDeNoPreferencia, this.usuario, this.resumenUsuario);
 		
 	}
 	
@@ -98,7 +98,7 @@ public class Sugerencia implements SugerenciaInterface {
 		
 		List<Promocion> listaPromocionesDeNoPreferencia = this.getPromocionesDeNoPreferencia();
 
-		return new PromocionesNoPreferidasIterator(listaPromocionesDeNoPreferencia, this.usuario);
+		return new PromocionesIterator(listaPromocionesDeNoPreferencia, this.usuario);
 	}
 	
 

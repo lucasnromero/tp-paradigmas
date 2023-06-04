@@ -8,14 +8,14 @@ import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 
-public class AtraccionesPreferidasIterator implements AtraccionesIteratorInterface {
+public class AtraccionesIterator implements AtraccionesIteratorInterface {
 
 	private Usuario usuario;
 	private ResumenUsuario resumenHastaElMomento;
 	private List<Atraccion> listaAtracciones;
 	private int posicionActual;
 
-	public AtraccionesPreferidasIterator(final List<Atraccion> listaAtracciones, final Usuario usuario,
+	public AtraccionesIterator(final List<Atraccion> listaAtracciones, final Usuario usuario,
 			final ResumenUsuario resumenHastaElMomento) {
 
 		super();
@@ -41,14 +41,12 @@ public class AtraccionesPreferidasIterator implements AtraccionesIteratorInterfa
 			return null;
 
 		Atraccion atraccionSugerida = this.listaAtracciones.get(this.posicionActual);
-
 		this.posicionActual++;
 
 		if (this.puedeSerComprada(atraccionSugerida))
 			return atraccionSugerida;
 
 		return null;
-
 	}
 
 	@Override

@@ -6,13 +6,13 @@ import java.util.List;
 import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 
-public class PromocionesNoPreferidasIterator implements PromocionesIteratorInterface {
+public class PromocionesIterator implements PromocionesIteratorInterface {
 
 	private Usuario usuario;
 	private List<Promocion> listaPromociones;
 	private int posicionActual;
 
-	public PromocionesNoPreferidasIterator(final List<Promocion> listaPromociones, final Usuario usuario) {
+	public PromocionesIterator(final List<Promocion> listaPromociones, final Usuario usuario) {
 
 		super();
 
