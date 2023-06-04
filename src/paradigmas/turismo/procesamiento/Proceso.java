@@ -3,10 +3,8 @@ package paradigmas.turismo.procesamiento;
 import java.util.List;
 import java.util.Scanner;
 
-import paradigmas.turismo.iterator.AtraccionesNoPreferidasIteratorInterface;
-import paradigmas.turismo.iterator.AtraccionesPreferidasIteratorInterface;
-import paradigmas.turismo.iterator.PromocionesNoPreferidasIteratorInterface;
-import paradigmas.turismo.iterator.PromocionesPreferidasIteratorInterface;
+import paradigmas.turismo.iterator.AtraccionesIteratorInterface;
+import paradigmas.turismo.iterator.PromocionesIteratorInterface;
 import paradigmas.turismo.iterator.Sugerencia;
 import paradigmas.turismo.iterator.SugerenciaInterface;
 import paradigmas.turismo.manejoArchivos.Archivo;
@@ -39,16 +37,16 @@ public class Proceso {
 			SugerenciaInterface sugerencia = new Sugerencia(listaAtracciones, listaPromociones, usuario,
 					resumenUsuario);
 
-			AtraccionesPreferidasIteratorInterface atraccionesPreferidasIterator = sugerencia
+			AtraccionesIteratorInterface atraccionesPreferidasIterator = sugerencia
 					.crearAtraccionesPreferidasIterator();
 
-			AtraccionesNoPreferidasIteratorInterface atraccionesNoPreferidasIterator = sugerencia
+			AtraccionesIteratorInterface atraccionesNoPreferidasIterator = sugerencia
 					.crearAtraccionesNoPreferidasIterator();
 
-			PromocionesPreferidasIteratorInterface promocionesPreferidasIterator = sugerencia
+			PromocionesIteratorInterface promocionesPreferidasIterator = sugerencia
 					.crearPromocionesPreferidasIterator();
 
-			PromocionesNoPreferidasIteratorInterface promocionesNoPreferidasIterator = sugerencia
+			PromocionesIteratorInterface promocionesNoPreferidasIterator = sugerencia
 					.crearPromocionesNoPreferidasIterator();
 
 			while (promocionesPreferidasIterator.hasNext()) {

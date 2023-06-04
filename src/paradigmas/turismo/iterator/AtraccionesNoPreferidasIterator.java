@@ -8,7 +8,7 @@ import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 
-public class AtraccionesNoPreferidasIterator implements AtraccionesNoPreferidasIteratorInterface {
+public class AtraccionesNoPreferidasIterator implements AtraccionesIteratorInterface {
 
 	private Usuario usuario;
 	private ResumenUsuario resumenHastaElMomento;

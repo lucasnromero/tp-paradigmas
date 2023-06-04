@@ -6,7 +6,7 @@ import java.util.List;
 import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 
-public class PromocionesNoPreferidasIterator implements PromocionesNoPreferidasIteratorInterface {
+public class PromocionesNoPreferidasIterator implements PromocionesIteratorInterface {
 
 	private Usuario usuario;
 	private List<Promocion> listaPromociones;

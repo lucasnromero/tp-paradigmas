@@ -27,7 +27,7 @@ public class Sugerencia implements SugerenciaInterface {
 	}
 
 	@Override
-	public AtraccionesPreferidasIterator crearAtraccionesPreferidasIterator() {
+	public AtraccionesIteratorInterface crearAtraccionesPreferidasIterator() {
 
 		List<Atraccion> listaAtraccionesDePreferencia = this.getAtraccionesDePreferencia();
 
@@ -49,7 +49,7 @@ public class Sugerencia implements SugerenciaInterface {
 	}
 
 	@Override
-	public PromocionesPreferidasIteratorInterface crearPromocionesPreferidasIterator() {
+	public PromocionesIteratorInterface crearPromocionesPreferidasIterator() {
 
 		List<Promocion> listaPromocionesDePreferencia = this.getPromocionesDePreferencia();
 
@@ -70,7 +70,7 @@ public class Sugerencia implements SugerenciaInterface {
 	}
 
 	@Override
-	public AtraccionesNoPreferidasIteratorInterface crearAtraccionesNoPreferidasIterator() {
+	public AtraccionesIteratorInterface crearAtraccionesNoPreferidasIterator() {
 		
 		List<Atraccion> listaAtraccionesDeNoPreferencia = this.getAtraccionesDeNoPreferencia();
 		
@@ -94,7 +94,7 @@ public class Sugerencia implements SugerenciaInterface {
 
 
 	@Override
-	public PromocionesNoPreferidasIteratorInterface crearPromocionesNoPreferidasIterator() {
+	public PromocionesIteratorInterface crearPromocionesNoPreferidasIterator() {
 		
 		List<Promocion> listaPromocionesDeNoPreferencia = this.getPromocionesDeNoPreferencia();
 

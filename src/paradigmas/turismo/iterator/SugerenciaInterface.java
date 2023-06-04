@@ -2,9 +2,9 @@ package paradigmas.turismo.iterator;
 
 public interface SugerenciaInterface {
 	
-	public AtraccionesPreferidasIteratorInterface crearAtraccionesPreferidasIterator();
-	public PromocionesPreferidasIteratorInterface crearPromocionesPreferidasIterator();
-	public AtraccionesNoPreferidasIteratorInterface crearAtraccionesNoPreferidasIterator();
-	public PromocionesNoPreferidasIteratorInterface crearPromocionesNoPreferidasIterator();
+	public AtraccionesIteratorInterface crearAtraccionesPreferidasIterator();
+	public PromocionesIteratorInterface crearPromocionesPreferidasIterator();
+	public AtraccionesIteratorInterface crearAtraccionesNoPreferidasIterator();
+	public PromocionesIteratorInterface crearPromocionesNoPreferidasIterator();
 
 }
