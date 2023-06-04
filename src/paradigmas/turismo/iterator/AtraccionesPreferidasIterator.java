@@ -59,12 +59,12 @@ public class AtraccionesPreferidasIterator implements AtraccionesPreferidasItera
 	private boolean puedeSerComprada(final Atraccion atraccion) {
 		return (atraccion.getCupo() != 0) && (this.usuario.getTiempoDisponible() >= atraccion.getPromedioDeTiempo())
 				&& (this.usuario.getPresupuesto() >= atraccion.getCostoVisita())
-				&& !this.yaEstabaEnUnPaqueteComprado(atraccion);
+				&& !this.estabaEnUnPaqueteComprado(atraccion);
 	}
 
-	private boolean yaEstabaEnUnPaqueteComprado(final Atraccion atraccion) {
+	private boolean estabaEnUnPaqueteComprado(final Atraccion atraccion) {
 
-		List<Promocion> promocionesCompradas = this.resumenHastaElMomento.getPromocionesComparadas();
+		List<Promocion> promocionesCompradas = this.resumenHastaElMomento.getPromocionesCompradas();
 		boolean estabaComprada = false;
 
 		for (Promocion promocion : promocionesCompradas) {

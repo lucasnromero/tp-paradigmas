@@ -57,7 +57,7 @@ public class ResumenUsuario {
 		atraccion.reducirCupo();
 	}
 
-	public List<Promocion> getPromocionesComparadas() {
+	public List<Promocion> getPromocionesCompradas() {
 		return this.promocionesCompradas;
 	}
 

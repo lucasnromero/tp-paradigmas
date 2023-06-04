@@ -39,7 +39,7 @@ public class Archivo {
 			int gastoTotal = resumenUsuario.getGastoTotal();
 			double tiempoInvertido = resumenUsuario.getTiempoTotal();
 			String[] nombresAtracciones = this.atraccionesCompradas(resumenUsuario.getAtraccionesCompradas());
-			String[] nombresPromociones = this.promocionesCompradas(resumenUsuario.getPromocionesComparadas());
+			String[] nombresPromociones = this.promocionesCompradas(resumenUsuario.getPromocionesCompradas());
 
 			String linea = "Nombre: " + nombreUsuario + "\n" + "Gasto Total: " + gastoTotal + "\n"
 					+ "Tiempo Invertido: " + tiempoInvertido + "\n" + "Atracciones compradas: "

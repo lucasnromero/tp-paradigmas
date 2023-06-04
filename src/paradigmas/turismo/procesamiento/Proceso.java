@@ -62,7 +62,7 @@ public class Proceso {
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.next();
 
-					if (respuesta.compareTo("S") == 0)
+					if (respuesta.compareToIgnoreCase("S") == 0)
 						resumenUsuario.agregarPromocion(promocion);
 				}
 
@@ -79,7 +79,7 @@ public class Proceso {
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.next();
 
-					if (respuesta.compareTo("S") == 0)
+					if (respuesta.compareToIgnoreCase("S") == 0)
 						resumenUsuario.agregarAtraccion(atraccion);
 				}
 
@@ -96,7 +96,7 @@ public class Proceso {
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.next();
 
-					if (respuesta.compareTo("S") == 0)
+					if (respuesta.compareToIgnoreCase("S") == 0)
 						resumenUsuario.agregarPromocion(promocion);
 				}
 
@@ -113,7 +113,7 @@ public class Proceso {
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.next();
 
-					if (respuesta.compareTo("S") == 0)
+					if (respuesta.compareToIgnoreCase("S") == 0)
 						resumenUsuario.agregarAtraccion(atraccion);
 				}
 

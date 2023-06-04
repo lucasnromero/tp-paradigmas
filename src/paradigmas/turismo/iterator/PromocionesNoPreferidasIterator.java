@@ -50,7 +50,7 @@ public class PromocionesNoPreferidasIterator implements PromocionesNoPreferidasI
 	}
 
 	private boolean puedeComprarse(final Promocion promocion) {
-		return (promocion.getCupoTotal() != 0) && (this.usuario.getTiempoDisponible() >= promocion.getTiempoTotal())
+		return (promocion.hayCupo()) && (this.usuario.getTiempoDisponible() >= promocion.getTiempoTotal())
 				&& (this.usuario.getPresupuesto() >= promocion.getCostoTotal());
 	}
 
