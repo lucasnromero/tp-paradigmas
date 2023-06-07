@@ -26,6 +26,58 @@ public class Archivo {
 		this.nombreArchivo = nombreArchivo;
 	}
 
+	public List<Usuario> leerArchivoUsuarios() {
+
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+
+		BufferedReader bufferedReader = null;
+
+		try {
+
+			FileReader fileReader = new FileReader("archivos/in/" + this.nombreArchivo + ".in");
+			bufferedReader = new BufferedReader(fileReader);
+
+			String linea;
+
+			while ((linea = bufferedReader.readLine()) != null) {
+
+				Usuario usuario = this.getUsuarioLeido(linea);
+				listaUsuarios.add(usuario);
+			}
+
+		} catch (FileNotFoundException fileNotFoundException) {
+
+			fileNotFoundException.printStackTrace();
+
+		} catch (IOException ioException) {
+
+			ioException.printStackTrace();
+		}
+
+		finally {
+
+			try {
+				bufferedReader.close();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
+			}
+		}
+
+		return listaUsuarios;
+	}
+
+	private Usuario getUsuarioLeido(String lineaLeida) {
+
+		String[] partes = lineaLeida.split("\\|");
+
+		String nombreUsuario = partes[0];
+		double tiempoDisponible = Double.parseDouble(partes[1]);
+		int presupuesto = Integer.parseInt(partes[2]);
+		String atraccionPreferida = partes[3];
+
+		return new Usuario(nombreUsuario, tiempoDisponible, presupuesto, atraccionPreferida);
+	}
+	
 	public void escribirResumenUsuario(final ResumenUsuario resumenUsuario) {
 
 		resumenUsuario.crearResumenUsuario();
@@ -147,57 +199,7 @@ public class Archivo {
 		return listaPromociones;
 	}
 
-	public List<Usuario> leerArchivoUsuarios() {
-
-		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
-
-		BufferedReader bufferedReader = null;
-
-		try {
-
-			FileReader fileReader = new FileReader("archivos/in/" + this.nombreArchivo + ".in");
-			bufferedReader = new BufferedReader(fileReader);
-
-			String linea;
-
-			while ((linea = bufferedReader.readLine()) != null) {
-
-				Usuario usuario = this.getUsuarioLeido(linea);
-				listaUsuarios.add(usuario);
-			}
-
-		} catch (FileNotFoundException fileNotFoundException) {
-
-			fileNotFoundException.printStackTrace();
-
-		} catch (IOException ioException) {
-
-			ioException.printStackTrace();
-		}
-
-		finally {
-
-			try {
-				bufferedReader.close();
-			} catch (IOException ioException) {
-				ioException.printStackTrace();
-			}
-		}
-
-		return listaUsuarios;
-	}
-
-	private Usuario getUsuarioLeido(String lineaLeida) {
-
-		String[] partes = lineaLeida.split("\\|");
-
-		String nombreUsuario = partes[0];
-		double tiempoDisponible = Double.parseDouble(partes[1]);
-		int presupuesto = Integer.parseInt(partes[2]);
-		String atraccionPreferida = partes[3];
-
-		return new Usuario(nombreUsuario, tiempoDisponible, presupuesto, atraccionPreferida);
-	}
+	
 
 	private Promocion getPromocionLeida(String lineaLeida) {
 
