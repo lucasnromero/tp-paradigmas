@@ -6,11 +6,11 @@ public class PromocionAbsoluta extends Promocion {
 
 	private int precioAbsoluto;
 
-	public PromocionAbsoluta(final List<Atraccion> listaAtracciones) {
+	public PromocionAbsoluta(final List<Atraccion> listaAtracciones, int menosPrecio) {
 
 		super(listaAtracciones);
 
-		this.precioAbsoluto = super.getCostoTotal() - 10;
+		this.precioAbsoluto = super.getCostoTotal() - menosPrecio;
 	}
 
 	@Override

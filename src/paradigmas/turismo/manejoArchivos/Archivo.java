@@ -26,6 +26,7 @@ public class Archivo {
 		this.nombreArchivo = nombreArchivo;
 	}
 
+	//REGION Usuario
 	public List<Usuario> leerArchivoUsuarios() {
 
 		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
@@ -119,6 +120,43 @@ public class Archivo {
 		}
 	}
 
+	private String[] atraccionesCompradas(final List<Atraccion> atracciones) {
+
+		String[] nombresAtraccionesCompradas = new String[atracciones.size()];
+
+		int i = 0;
+
+		for (Atraccion atraccion : atracciones) {
+			nombresAtraccionesCompradas[i] = atraccion.getNombreAtraccion();
+			i++;
+		}
+
+		return nombresAtraccionesCompradas;
+	}
+
+	private String[] promocionesCompradas(final List<Promocion> promociones) {
+
+		String[] nombresPromocionesCompradas = null;
+
+		for (Promocion promocion : promociones) {
+
+			List<Atraccion> atraccionesDeLaPromocion = promocion.getAtracciones();
+			nombresPromocionesCompradas = new String[atraccionesDeLaPromocion.size()];
+			int i = 0;
+
+			for (Atraccion atraccion : atraccionesDeLaPromocion) {
+
+				nombresPromocionesCompradas[i] = atraccion.getNombreAtraccion();
+				i++;
+			}
+
+		}
+
+		return nombresPromocionesCompradas;
+	}
+	
+	//ENDREGION Usuario
+	
 	public List<Atraccion> leerArchivoAtracciones() {
 
 		List<Atraccion> listaAtracciones = new ArrayList<Atraccion>();
@@ -159,7 +197,20 @@ public class Archivo {
 		return listaAtracciones;
 	}
 
-	public List<Promocion> leerArchivoPromociones() {
+	private Atraccion getAtraccionLeida(String lineaLeida) {
+
+		String[] partes = lineaLeida.split("\\|");
+
+		String nombreAtraccion = partes[0];
+		int costoVisita = Integer.parseInt(partes[1]);
+		double promedioTiempo = Double.parseDouble(partes[2]);
+		int cupo = Integer.parseInt(partes[3]);
+		String tipoAtraccion = partes[4];
+
+		return new Atraccion(nombreAtraccion, costoVisita, promedioTiempo, cupo, tipoAtraccion);
+	}
+	
+	public List<Promocion> leerArchivoPromociones(List<Atraccion> atraccionesLeidas) {
 
 		List<Promocion> listaPromociones = new ArrayList<Promocion>();
 
@@ -174,7 +225,7 @@ public class Archivo {
 
 			while ((linea = bufferedReader.readLine()) != null) {
 
-				Promocion promocion = this.getPromocionLeida(linea);
+				Promocion promocion = this.getPromocionLeida(linea, atraccionesLeidas);
 				listaPromociones.add(promocion);
 			}
 
@@ -199,99 +250,39 @@ public class Archivo {
 		return listaPromociones;
 	}
 
-	
-
-	private Promocion getPromocionLeida(String lineaLeida) {
-
-		String[] partesGenerales = lineaLeida.split("\\|");
-		String[] atraccionesDelPaquete = partesGenerales[0].split(";");
-
-		Archivo archivoAtracciones = new Archivo("atracciones");
-
-		List<Atraccion> listaAtracciones = archivoAtracciones.leerArchivoAtracciones();
-		List<Atraccion> listaAtraccionesDeLaPromocion = new ArrayList<Atraccion>();
-
-		Promocion promocion = null;
-
-		for (int i = 0; i < atraccionesDelPaquete.length; i++) {
-
-			String nombreAtraccion = atraccionesDelPaquete[i];
-
-			for (Atraccion atraccion : listaAtracciones)
-				if (nombreAtraccion.compareTo(atraccion.getNombreAtraccion()) == 0)
-					listaAtraccionesDeLaPromocion.add(atraccion);
-
-		}
-
-		String tipoPromocion = partesGenerales[partesGenerales.length - 1];
-
-		if (tipoPromocion.compareTo("Porcentual") == 0)
-			promocion = new PromocionPorcentual(listaAtraccionesDeLaPromocion,
-					Double.parseDouble(partesGenerales[partesGenerales.length - 2]));
-
-		else if (tipoPromocion.compareTo("Absoluta") == 0)
-			promocion = new PromocionAbsoluta(listaAtraccionesDeLaPromocion);
-
-		else if (tipoPromocion.compareTo("AxB") == 0) {
-
-			String atraccionGratuita = partesGenerales[partesGenerales.length - 2];
-			Atraccion atraccionGratuitaDelPaquete = null;
-
-			for (Atraccion atraccion : listaAtracciones)
-				if (atraccion.getNombreAtraccion().compareTo(atraccionGratuita) == 0)
-					atraccionGratuitaDelPaquete = atraccion;
-
-			promocion = new PromocionAxB(listaAtraccionesDeLaPromocion, atraccionGratuitaDelPaquete);
-		}
-
-		return promocion;
-	}
-
-	private Atraccion getAtraccionLeida(String lineaLeida) {
+	private Promocion getPromocionLeida(String lineaLeida, List<Atraccion> atraccionesLeidas) {
 
 		String[] partes = lineaLeida.split("\\|");
 
-		String nombreAtraccion = partes[0];
-		int costoVisita = Integer.parseInt(partes[1]);
-		double promedioTiempo = Double.parseDouble(partes[2]);
-		int cupo = Integer.parseInt(partes[3]);
-		String tipoAtraccion = partes[4];
+		String[] atraccionesDelPaquete = partes[0].split(";");
+		
+		List<Atraccion> listaAtraccionesDeLaPromocion = new ArrayList<Atraccion>();
 
-		return new Atraccion(nombreAtraccion, costoVisita, promedioTiempo, cupo, tipoAtraccion);
-	}
-
-	private String[] atraccionesCompradas(final List<Atraccion> atracciones) {
-
-		String[] nombresAtraccionesCompradas = new String[atracciones.size()];
-
-		int i = 0;
-
-		for (Atraccion atraccion : atracciones) {
-			nombresAtraccionesCompradas[i] = atraccion.getNombreAtraccion();
-			i++;
+		//mapeo
+		for(String atraccion: atraccionesDelPaquete) {
+			listaAtraccionesDeLaPromocion.add(buscarAtraccionPorNombre(atraccionesLeidas,atraccion));
+		}	
+		
+		if(partes[2].equals("AxB")) {
+			return new PromocionAxB(listaAtraccionesDeLaPromocion, buscarAtraccionPorNombre(atraccionesLeidas, partes[1]));
+		} else if(partes[2].equals("Porcentual")) {
+			return new PromocionPorcentual(listaAtraccionesDeLaPromocion, Double.parseDouble(partes[1]));
+		} else if(partes[2].equals("Absoluta")) {
+			return new PromocionAbsoluta(listaAtraccionesDeLaPromocion, Integer.parseInt(partes[1]));
 		}
 
-		return nombresAtraccionesCompradas;
+		return null;
 	}
 
-	private String[] promocionesCompradas(final List<Promocion> promociones) {
+	private static Atraccion buscarAtraccionPorNombre(List<Atraccion> listaAtracciones, String nombre) {
+        for (Atraccion atraccion : listaAtracciones) {
+            if (atraccion.getNombreAtraccion().equals(nombre)) {
+                return atraccion;
+            }
+        }
+        return null; // Si no se encuentra la atracción, se retorna null
+    }
+	
 
-		String[] nombresPromocionesCompradas = null;
-
-		for (Promocion promocion : promociones) {
-
-			List<Atraccion> atraccionesDeLaPromocion = promocion.getAtracciones();
-			nombresPromocionesCompradas = new String[atraccionesDeLaPromocion.size()];
-			int i = 0;
-
-			for (Atraccion atraccion : atraccionesDeLaPromocion) {
-
-				nombresPromocionesCompradas[i] = atraccion.getNombreAtraccion();
-				i++;
-			}
-
-		}
-
-		return nombresPromocionesCompradas;
-	}
+	
 }

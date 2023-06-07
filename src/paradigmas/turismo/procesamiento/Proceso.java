@@ -27,7 +27,7 @@ public class Proceso {
 
 		List<Usuario> listaUsuarios = archivoUsuarios.leerArchivoUsuarios();
 		List<Atraccion> listaAtracciones = archivoAtracciones.leerArchivoAtracciones();
-		List<Promocion> listaPromociones = archivoPromociones.leerArchivoPromociones();
+		List<Promocion> listaPromociones = archivoPromociones.leerArchivoPromociones(listaAtracciones);
 
 		for (Usuario usuario : listaUsuarios) {
 
