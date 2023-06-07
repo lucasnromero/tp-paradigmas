@@ -38,11 +38,15 @@ public class Proceso {
 		  SugerenciaInterface sugerencia = new Sugerencia(listaAtracciones,
 		  listaPromociones, usuario, resumenUsuario);
 		  
-		  promocionesPreferidas(sugerencia, resumenUsuario, scanner);
-		  atraccionesPreferidas(sugerencia, resumenUsuario, scanner);
-		  promocionesNoPreferidas(sugerencia, resumenUsuario, scanner);
-		  atraccionesNoPreferidas(sugerencia, resumenUsuario, scanner);
+		  PromocionesIteratorInterface promocionesPreferidasIterator = sugerencia.crearPromocionesPreferidasIterator();
+		  AtraccionesIteratorInterface atraccionesPreferidasIterator = sugerencia.crearAtraccionesPreferidasIterator();
+		  PromocionesIteratorInterface promocionesNoPreferidasIterator = sugerencia.crearPromocionesNoPreferidasIterator();
+		  AtraccionesIteratorInterface atraccionesNoPreferidasIterator = sugerencia.crearAtraccionesNoPreferidasIterator();
 		  
+		  promocionesIterator(promocionesPreferidasIterator, sugerencia, resumenUsuario, scanner);
+		  atraccionesIterator(atraccionesPreferidasIterator, sugerencia, resumenUsuario, scanner);	
+		  promocionesIterator(promocionesNoPreferidasIterator, sugerencia, resumenUsuario, scanner);
+		  atraccionesIterator(atraccionesNoPreferidasIterator, sugerencia, resumenUsuario, scanner);
 		  
 		  Proceso.guardarResumenUsuario(resumenUsuario);
 		  
@@ -59,13 +63,11 @@ public class Proceso {
 		System.out.println("-----------------------------------------");
 	}
 	
-	private static void promocionesPreferidas(SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
-		PromocionesIteratorInterface promocionesPreferidasIterator = sugerencia
-				.crearPromocionesPreferidasIterator();
+	private static void promocionesIterator(PromocionesIteratorInterface promocionesIterator, SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
 		
-		while (promocionesPreferidasIterator.hasNext()) {
+		while (promocionesIterator.hasNext()) {
 
-			Promocion promocion = promocionesPreferidasIterator.getNext();
+			Promocion promocion = promocionesIterator.getNext();
 
 			if (promocion != null) {
 
@@ -91,78 +93,12 @@ public class Proceso {
 
 	}
 	
-	private static void atraccionesPreferidas(SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
-		AtraccionesIteratorInterface atraccionesPreferidasIterator = sugerencia
-				.crearAtraccionesPreferidasIterator();
+	private static void atraccionesIterator(AtraccionesIteratorInterface atraccionesIterator, SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
 		
-		while (atraccionesPreferidasIterator.hasNext()) {
-
-			Atraccion atraccion = atraccionesPreferidasIterator.getNext();
-
-			if (atraccion != null) {
-
-				System.out.println(atraccion.toString() + "\n\n");
-
-				boolean respuestaValida = false;
-				do {
-		            System.out.println("Acepta sugerencia? Ingrese S o N");
-		            String respuesta = scanner.next();
-		            
-		            if (respuesta.equalsIgnoreCase("S")) {
-		                resumenUsuario.agregarAtraccion(atraccion);
-		                respuestaValida = true;
-		            } else if (respuesta.equalsIgnoreCase("N")) {
-		                respuestaValida = true;
-		            } else {
-		                System.out.println("Por favor, ingrese una respuesta válida.");
-		            }
-		        } while (!respuestaValida);
-			}
-
-		}
 		
-	}
-	
-	private static void promocionesNoPreferidas(SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
-		
-		PromocionesIteratorInterface promocionesNoPreferidasIterator = sugerencia
-				.crearPromocionesNoPreferidasIterator();
-		
-		while (promocionesNoPreferidasIterator.hasNext()) {
+		while (atraccionesIterator.hasNext()) {
 
-			Promocion promocion = promocionesNoPreferidasIterator.getNext();
-
-			if (promocion != null) {
-
-				System.out.println(promocion.toString() + "\n\n");
-
-				boolean respuestaValida = false;
-				do {
-		            System.out.println("Acepta sugerencia? Ingrese S o N");
-		            String respuesta = scanner.next();
-		            
-		            if (respuesta.equalsIgnoreCase("S")) {
-		                resumenUsuario.agregarPromocion(promocion);
-		                respuestaValida = true;
-		            } else if (respuesta.equalsIgnoreCase("N")) {
-		                respuestaValida = true;
-		            } else {
-		                System.out.println("Por favor, ingrese una respuesta válida.");
-		            }
-		        } while (!respuestaValida);
-			}
-
-		}
-		
-	}
-	
-	private static void atraccionesNoPreferidas(SugerenciaInterface sugerencia, ResumenUsuario resumenUsuario, Scanner scanner) {
-		AtraccionesIteratorInterface atraccionesNoPreferidasIterator = sugerencia
-				.crearAtraccionesNoPreferidasIterator();
-		
-		while (atraccionesNoPreferidasIterator.hasNext()) {
-
-			Atraccion atraccion = atraccionesNoPreferidasIterator.getNext();
+			Atraccion atraccion = atraccionesIterator.getNext();
 
 			if (atraccion != null) {
 
