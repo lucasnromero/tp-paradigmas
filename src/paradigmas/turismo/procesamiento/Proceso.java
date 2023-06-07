@@ -29,22 +29,23 @@ public class Proceso {
 		List<Atraccion> listaAtracciones = archivoAtracciones.leerArchivoAtracciones();
 		List<Promocion> listaPromociones = archivoPromociones.leerArchivoPromociones(listaAtracciones);
 
-		for (Usuario usuario : listaUsuarios) {
-
-			System.out.println("Nombre del usuario: " + usuario.getNombreUsuario());
-
-			ResumenUsuario resumenUsuario = new ResumenUsuario(usuario);
-			SugerenciaInterface sugerencia = new Sugerencia(listaAtracciones, listaPromociones, usuario,
-					resumenUsuario);
-
-			promocionesPreferidas(sugerencia, resumenUsuario, scanner);
-			atraccionesPreferidas(sugerencia, resumenUsuario, scanner);
-			promocionesNoPreferidas(sugerencia, resumenUsuario, scanner);
-			atraccionesNoPreferidas(sugerencia, resumenUsuario, scanner);
-			
-
-			Proceso.guardarResumenUsuario(resumenUsuario);
-		}
+		
+		  for (Usuario usuario : listaUsuarios) {
+		  
+		  System.out.println("Nombre del usuario: " + usuario.getNombreUsuario());
+		  
+		  ResumenUsuario resumenUsuario = new ResumenUsuario(usuario);
+		  SugerenciaInterface sugerencia = new Sugerencia(listaAtracciones,
+		  listaPromociones, usuario, resumenUsuario);
+		  
+		  promocionesPreferidas(sugerencia, resumenUsuario, scanner);
+		  atraccionesPreferidas(sugerencia, resumenUsuario, scanner);
+		  promocionesNoPreferidas(sugerencia, resumenUsuario, scanner);
+		  atraccionesNoPreferidas(sugerencia, resumenUsuario, scanner);
+		  
+		  
+		  Proceso.guardarResumenUsuario(resumenUsuario); }
+		 
 
 		scanner.close();
 
