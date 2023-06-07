@@ -2,7 +2,7 @@ package paradigmas.turismo.iterator;
 
 import paradigmas.turismo.models.Promocion;
 
-public interface PromocionesIteratorInterface {
+public interface PromocionesIteratorInterface{
 	
 	public boolean hasNext();
 
