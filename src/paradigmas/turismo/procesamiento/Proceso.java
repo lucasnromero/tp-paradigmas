@@ -44,7 +44,9 @@ public class Proceso {
 		  atraccionesNoPreferidas(sugerencia, resumenUsuario, scanner);
 		  
 		  
-		  Proceso.guardarResumenUsuario(resumenUsuario); }
+		  Proceso.guardarResumenUsuario(resumenUsuario);
+		  
+		  }
 		 
 
 		scanner.close();
@@ -69,11 +71,20 @@ public class Proceso {
 
 				System.out.println(promocion.toString() + "\n\n");
 
-				System.out.println("Acepta sugerencia? Ingrese S o N");
-				String respuesta = scanner.next();
-
-				if (respuesta.compareToIgnoreCase("S") == 0)
-					resumenUsuario.agregarPromocion(promocion);
+				boolean respuestaValida = false;
+				do {
+		            System.out.println("Acepta sugerencia? Ingrese S o N");
+		            String respuesta = scanner.next();
+		            
+		            if (respuesta.equalsIgnoreCase("S")) {
+		                resumenUsuario.agregarPromocion(promocion);
+		                respuestaValida = true;
+		            } else if (respuesta.equalsIgnoreCase("N")) {
+		                respuestaValida = true;
+		            } else {
+		                System.out.println("Por favor, ingrese una respuesta válida.");
+		            }
+		        } while (!respuestaValida);
 			}
 
 		}
@@ -92,11 +103,20 @@ public class Proceso {
 
 				System.out.println(atraccion.toString() + "\n\n");
 
-				System.out.println("Acepta sugerencia? Ingrese S o N");
-				String respuesta = scanner.next();
-
-				if (respuesta.compareToIgnoreCase("S") == 0)
-					resumenUsuario.agregarAtraccion(atraccion);
+				boolean respuestaValida = false;
+				do {
+		            System.out.println("Acepta sugerencia? Ingrese S o N");
+		            String respuesta = scanner.next();
+		            
+		            if (respuesta.equalsIgnoreCase("S")) {
+		                resumenUsuario.agregarAtraccion(atraccion);
+		                respuestaValida = true;
+		            } else if (respuesta.equalsIgnoreCase("N")) {
+		                respuestaValida = true;
+		            } else {
+		                System.out.println("Por favor, ingrese una respuesta válida.");
+		            }
+		        } while (!respuestaValida);
 			}
 
 		}
@@ -116,11 +136,20 @@ public class Proceso {
 
 				System.out.println(promocion.toString() + "\n\n");
 
-				System.out.println("Acepta sugerencia? Ingrese S o N");
-				String respuesta = scanner.next();
-
-				if (respuesta.compareToIgnoreCase("S") == 0)
-					resumenUsuario.agregarPromocion(promocion);
+				boolean respuestaValida = false;
+				do {
+		            System.out.println("Acepta sugerencia? Ingrese S o N");
+		            String respuesta = scanner.next();
+		            
+		            if (respuesta.equalsIgnoreCase("S")) {
+		                resumenUsuario.agregarPromocion(promocion);
+		                respuestaValida = true;
+		            } else if (respuesta.equalsIgnoreCase("N")) {
+		                respuestaValida = true;
+		            } else {
+		                System.out.println("Por favor, ingrese una respuesta válida.");
+		            }
+		        } while (!respuestaValida);
 			}
 
 		}
@@ -139,11 +168,20 @@ public class Proceso {
 
 				System.out.println(atraccion.toString() + "\n\n");
 
-				System.out.println("Acepta sugerencia? Ingrese S o N");
-				String respuesta = scanner.next();
-
-				if (respuesta.compareToIgnoreCase("S") == 0)
-					resumenUsuario.agregarAtraccion(atraccion);
+				boolean respuestaValida = false;
+				do {
+		            System.out.println("Acepta sugerencia? Ingrese S o N");
+		            String respuesta = scanner.next();
+		            
+		            if (respuesta.equalsIgnoreCase("S")) {
+		                resumenUsuario.agregarAtraccion(atraccion);
+		                respuestaValida = true;
+		            } else if (respuesta.equalsIgnoreCase("N")) {
+		                respuestaValida = true;
+		            } else {
+		                System.out.println("Por favor, ingrese una respuesta válida.");
+		            }
+		        } while (!respuestaValida);
 			}
 
 		}

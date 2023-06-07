@@ -271,6 +271,7 @@ public class Archivo {
 			return new PromocionAbsoluta(listaAtraccionesDeLaPromocion, Integer.parseInt(partes[1]));
 		}
 
+		//si retorna null, algo está mal en el archivo
 		return null;
 	}
 
