@@ -69,10 +69,10 @@ public abstract class Promocion implements Comparable<Promocion> {
 
 	@Override
 	public String toString() {
-		return "Promocion" + "\n" + "-Atracciones incluidas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
+		return "PACK " + this.getTipoAtracciones() + "\n" + "-Atracciones incluidas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
 	}
 
-	private String[] getNombresAtracciones() {
+	public String[] getNombresAtracciones() {
 
 		String[] nombresAtracciones = new String[this.listaAtracciones.size()];
 		int i = 0;

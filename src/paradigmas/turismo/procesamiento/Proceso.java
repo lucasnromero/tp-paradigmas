@@ -50,6 +50,12 @@ public class Proceso {
 		  
 		  Proceso.guardarResumenUsuario(resumenUsuario);
 		  
+		  System.out.println("\n******************************************************************************************");
+		  System.out.println("\t\t\tRESUMEN: ");
+		  resumenUsuario.mostrarResumen();
+		  System.out.println("\t\t\t¡GRACIAS POR VISITARNOS!");
+		  System.out.println("********************************************************************************************\n");
+		  
 		  }
 		 
 

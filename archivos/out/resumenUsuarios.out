@@ -1,14 +1,74 @@
 Nombre: Jorge
-Gasto Total: 4980
-Tiempo Invertido: 54.0
-Atracciones compradas: [Avistamiento de ballenas, Excursión a un volcán activo, Excursión en quad por el desierto, Ruta en 4x4 por terrenos difíciles, Excursión a la cascada, Avistamiento de delfines, Excursión en kayak por cuevas marinas, Caminata en el bosque lluvioso, Paseo en helicóptero, Observación de auroras boreales]
-Promociones compradas:[Observación de aves, Paseo en bote por el río, Recorrido en tren panorámico]
+Atracciones compradas: [Avistamiento de ballenas, Excursión a un volcán activo, Excursión en quad por el desierto]
+
+Promociones compradas:
+PACK Aventura
+-Atracciones incluidas: [Paseo en bicicleta por el bosque, Tour en globo aerostático]
+-Duracion: 4.5
+-Precio original: 600
+-Precio con descuento: 420
+
+PACK Aventura
+-Atracciones incluidas: [Senderismo en la montaña, Navegación en kayak, Excursión en jeep por el desierto]
+-Duracion: 8.0
+-Precio original: 530
+-Precio con descuento: 265
+
+PACK Degustación
+-Atracciones incluidas: [Degustación de vinos, Tour en bicicleta por viñedos, Degustación de chocolate, Cata de quesos]
+-Duracion: 6.0
+-Precio original: 490
+-Precio con descuento: 480
+
+Gasto Total: 2265
+Tiempo Invertido: 30.5
 
 
 Nombre: Jorge
-Gasto Total: 1530
-Tiempo Invertido: 24.0
-Atracciones compradas: []
-Promociones compradas:[Observación de aves, Paseo en bote por el río, Recorrido en tren panorámico]
+
+Atracciones compradas: [Avistamiento de ballenas]
+
+Promociones compradas:***
+PACK Aventura
+-Atracciones incluidas: [Paseo en bicicleta por el bosque, Tour en globo aerostático]
+-Duracion: 4.5
+-Precio original: 600
+-Precio con descuento: 420
+
+PACK Aventura
+-Atracciones incluidas: [Senderismo en la montaña, Navegación en kayak, Excursión en jeep por el desierto]
+-Duracion: 8.0
+-Precio original: 530
+-Precio con descuento: 265
+
+PACK Paisaje
+-Atracciones incluidas: [Observación de aves, Paseo en bote por el río, Recorrido en tren panorámico, Visita a un jardín botánico]
+-Duracion: 6.5
+-Precio original: 545
+-Precio con descuento: 345
+
+Gasto Total: 1430
+Tiempo Invertido: 23.0
+
+
+Nombre: Jorge
+
+Atracciones compradas: [Avistamiento de ballenas, Excursión a un volcán activo]
+
+Promociones compradas:
+*PACK Aventura
+-Atracciones incluidas: [Paseo en bicicleta por el bosque, Tour en globo aerostático]
+-Duracion: 4.5
+-Precio original: 600
+-Precio con descuento: 420
+
+*PACK Aventura
+-Atracciones incluidas: [Senderismo en la montaña, Navegación en kayak, Excursión en jeep por el desierto]
+-Duracion: 8.0
+-Precio original: 530
+-Precio con descuento: 265
+
+Gasto Total: 1435
+Tiempo Invertido: 21.0
 
 

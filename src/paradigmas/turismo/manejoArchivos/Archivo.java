@@ -92,12 +92,22 @@ public class Archivo {
 			int gastoTotal = resumenUsuario.getGastoTotal();
 			double tiempoInvertido = resumenUsuario.getTiempoTotal();
 			String[] nombresAtracciones = this.atraccionesCompradas(resumenUsuario.getAtraccionesCompradas());
-			String[] nombresPromociones = this.promocionesCompradas(resumenUsuario.getPromocionesCompradas());
+			//String[] nombresPromociones = this.promocionesCompradas(resumenUsuario.getPromocionesCompradas());
+			
+			String promos = "";
+			for(Promocion promocion : resumenUsuario.getPromocionesCompradas()) {
+				promos = promos + "\n*" + promocion.toString() + "\n";
+			}
 
-			String linea = "Nombre: " + nombreUsuario + "\n" + "Gasto Total: " + gastoTotal + "\n"
+			/*String linea = "Nombre: " + nombreUsuario + "\n" + "Gasto Total: " + gastoTotal + "\n"
 					+ "Tiempo Invertido: " + tiempoInvertido + "\n" + "Atracciones compradas: "
 					+ Arrays.toString(nombresAtracciones) + "\n" + "Promociones compradas:"
-					+ Arrays.toString(nombresPromociones) + "\n\n\n";
+					+ Arrays.toString(nombresPromociones) + "\n\n\n";*/
+			
+			String linea = "Nombre: " + nombreUsuario +  "\n\n" + "Atracciones compradas: "
+					+ Arrays.toString(nombresAtracciones) + "\n\n" + "Promociones compradas:"
+					+ promos + "\nGasto Total: " + gastoTotal + "\n"
+							+ "Tiempo Invertido: " + tiempoInvertido + "\n\n\n";
 
 			fileWriter = new FileWriter("archivos/out/" + this.nombreArchivo + ".out", true);
 			printerWriter = new PrintWriter(fileWriter);
@@ -134,7 +144,7 @@ public class Archivo {
 		return nombresAtraccionesCompradas;
 	}
 
-	private String[] promocionesCompradas(final List<Promocion> promociones) {
+	private String[] promocionesCompradas(final List<Promocion> promociones) { //quedó obsoleta en base a mi solucion CORO
 
 		String[] nombresPromocionesCompradas = null;
 

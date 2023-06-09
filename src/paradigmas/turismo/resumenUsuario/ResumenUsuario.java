@@ -85,10 +85,31 @@ public class ResumenUsuario {
 		this.setTiempoTotal();
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario : " + usuario.getNombreUsuario() + "\n" + "Compra: " + this.atraccionesCompradas.toString()
-				+ "\n" + "Gasto total: " + this.gastoTotal + "\n" + "Tiempo a invertir: " + this.tiempoTotal + "\n\n";
+	
+	public void mostrarResumen() {
+		
+		System.out.println("\n*USUARIO: " + usuario.getNombreUsuario());
+		
+		if(!this.promocionesCompradas.isEmpty()){
+			System.out.println("\nUsted Compró las siguientes promociones: ");
+		}
+		
+		for(Promocion promocion: this.promocionesCompradas) {
+			System.out.println("\n" + promocion.toString());
+		}
+		
+		if(!this.atraccionesCompradas.isEmpty()) {
+			System.out.println("\n*Usted Compró las siguientes atracciones:");
+		}
+		
+		for(Atraccion atraccion: this.atraccionesCompradas) {
+			System.out.println(atraccion.toString());
+		}
+		
+		System.out.println("\n*Gastó en total: " + this.gastoTotal); 
+		System.out.println("*Tiempo a invertir: " + this.tiempoTotal); 
+		
 	}
+
 
 }
