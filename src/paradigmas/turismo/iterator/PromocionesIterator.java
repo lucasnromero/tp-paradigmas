@@ -54,4 +54,7 @@ public class PromocionesIterator implements PromocionesIteratorInterface {
 				&& (this.usuario.getPresupuesto() >= promocion.getCostoTotal());
 	}
 
+	public List<Promocion> getPromocionesCollection() {
+		return Collections.unmodifiableList(this.listaPromociones);
+	}
 }

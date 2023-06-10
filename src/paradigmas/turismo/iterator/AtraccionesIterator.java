@@ -76,4 +76,8 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 
 		return estabaComprada;
 	}
+
+	public List<Atraccion> getAtraccionesCollection() {
+		return Collections.unmodifiableList(this.listaAtracciones);
+	}
 }

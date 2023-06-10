@@ -48,14 +48,13 @@ public class Atraccion implements Comparable<Atraccion> {
 
 	@Override
 	public String toString() {
-		return "-Atracción: " + this.nombreAtraccion + "\n" 
-				+ "-Precio: " + this.costoVisita + "\n"
-				+ "-Duración: " + this.promedioDeTiempo +" horas\n";
+		return "-Atracción: " + this.nombreAtraccion + "\n" + "-Precio: " + this.costoVisita + "\n" + "-Duración: "
+				+ this.promedioDeTiempo + " horas\n";
 	}
-	
+
 	public String toStringUI() {
-		return "\u001B[1mAtracción:\u001B[0m " + this.nombreAtraccion + "\n" + "\u2022Precio: " + this.costoVisita + "\n"
-				+ "\u2022Duración: " + this.promedioDeTiempo +" horas\n";
+		return "\u001B[1mAtracción:\u001B[0m " + this.nombreAtraccion + "\n" + "\u2022Precio: " + this.costoVisita
+				+ "\n" + "\u2022Duración: " + this.promedioDeTiempo + " horas\n";
 	}
 
 	@Override

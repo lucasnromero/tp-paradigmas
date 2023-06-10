@@ -1,17 +1,18 @@
-package testClases;
-
-import static org.junit.Assert.*;
+package paradigmas.turismo.test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import paradigmas.turismo.models.*;
 import paradigmas.turismo.iterator.Sugerencia;
-import paradigmas.turismo.resumenUsuario.*;
+import paradigmas.turismo.models.Atraccion;
+import paradigmas.turismo.models.Promocion;
+import paradigmas.turismo.models.PromocionAbsoluta;
+import paradigmas.turismo.models.Usuario;
+import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 
-public class testSugerencia {
+public class SugerenciaTest {
 
 	@Test
 	public void MostrarPromocionesDePreferencia() {

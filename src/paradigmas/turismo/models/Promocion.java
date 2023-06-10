@@ -67,43 +67,16 @@ public abstract class Promocion implements Comparable<Promocion> {
 		for (Atraccion atraccion : this.listaAtracciones)
 			atraccion.reducirCupo();
 	}
-	
-	public boolean mismoCupo(Promocion other) { //para test
-
-		for(Atraccion atraccionOther : other.listaAtracciones) {
-			for (Atraccion atraccionThis : this.listaAtracciones) {
-				if(atraccionOther.getNombreAtraccion() == atraccionThis.getNombreAtraccion() && atraccionOther.getCupo() != atraccionThis.getCupo()){
-					return false;
-				}
-			}
-		}
-		return true;
-	}
 
 	@Override
 	public String toString() {
-		return "Promoción " + this.getTipoAtracciones() + "\n" + "-Atracciones incluídas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
+		return "Promoción " + this.getTipoAtracciones() + "\n" + "-Atracciones incluídas: "
+				+ Arrays.toString(this.getNombresAtracciones()) + "\n";
 	}
-	
-	
+
 	public String toStringUI() {
-		return "\u001B[1mPromoción\u001B[0m " + this.getTipoAtracciones() + "\n" + "\u2022 Atracciones incluídas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
-	}
-	
-	@Override
-	public boolean equals(Object obj) { //para test
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Promocion other = (Promocion) obj;
-		if(!Objects.equals(this.toString(), other.toString()))
-			return false;
-		
-		return this.mismoCupo(other);
-				
+		return "\u001B[1mPromoción\u001B[0m " + this.getTipoAtracciones() + "\n" + "\u2022 Atracciones incluídas: "
+				+ Arrays.toString(this.getNombresAtracciones()) + "\n";
 	}
 
 	public String[] getNombresAtracciones() {
@@ -117,6 +90,23 @@ public abstract class Promocion implements Comparable<Promocion> {
 		}
 
 		return nombresAtracciones;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(listaAtracciones);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		return Objects.equals(listaAtracciones, other.listaAtracciones);
 	}
 
 }

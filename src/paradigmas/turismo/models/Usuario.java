@@ -47,15 +47,15 @@ public class Usuario {
 		return "Usuario [nombreUsuario=" + nombreUsuario + ", tiempoDisponible=" + tiempoDisponible + ", presupuesto="
 				+ presupuesto + ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
-	
+
 	public void mostrarUsuarioInicio() {
 		System.out.println("\u001B[1mUSUARIO:\u001B[0m " + this.getNombreUsuario() + "\n"
 				+ "\u001B[1mTiempo disponible:\u001B[0m " + this.getTiempoDisponible() + "\n"
 				+ "\u001B[1mPresupuesto:\u001B[0m " + this.getPresupuesto() + "\n"
 				+ "\u001B[1mTipo de atracciones preferidas:\u001B[0m " + this.getAtraccionPreferida() + "\n");
-		
-		 System.out.println("\n*****************************************");
-		 System.out.println("\u001B[1mSUGERENCIAS DE COMPRA\u001B[0m");
+
+		System.out.println("\n*****************************************");
+		System.out.println("\u001B[1mSUGERENCIAS DE COMPRA\u001B[0m");
 	}
 
 }
