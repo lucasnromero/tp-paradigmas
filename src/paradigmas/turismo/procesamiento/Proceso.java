@@ -62,6 +62,7 @@ public class Proceso {
 
 	private static void guardarYMostrarResumenUsuarioValido(final ResumenUsuario resumenUsuario) {
 		if (resumenUsuario.sugerenciaDisponible()) {
+			resumenUsuario.crearResumenUsuario();
 			resumenUsuario.mostrarResumen();
 		}
 
