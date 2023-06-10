@@ -160,9 +160,6 @@ public class OfertasTest {
 		List<Promocion> listaPromocionesEsperada = Arrays.asList(promocion1, promocion2);
 
 		List<Promocion> listaPromocionesResultante = promocionesPreferidasIterator.getPromocionesCollection();
-		
-		for(Promocion promocion : listaPromocionesResultante)
-			System.out.println(promocion.toString());
 
 		Assert.assertEquals(listaPromocionesEsperada, listaPromocionesResultante);
 

@@ -63,7 +63,6 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 	private boolean estabaEnUnPaqueteComprado(final Atraccion atraccion) {
 
 		List<Promocion> promocionesCompradas = this.resumenHastaElMomento.getPromocionesCompradas();
-		boolean estabaComprada = false;
 
 		for (Promocion promocion : promocionesCompradas) {
 
@@ -71,10 +70,10 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 
 			for (Atraccion atraccionEnLaPromocion : atraccionesEnLaPromocion)
 				if (atraccionEnLaPromocion.equals(atraccion))
-					estabaComprada = true;
+					return true;
 		}
 
-		return estabaComprada;
+		return false;
 	}
 
 	public List<Atraccion> getAtraccionesCollection() {
