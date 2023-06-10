@@ -29,5 +29,51 @@ public class testPromocion {
 		
 		assertEquals(promocionEsperada, promocionObtenida);
 	}
+	
+	@Test
+	public void calculoPromocionAbsoluta() {
+		
+		int costoPromocionEsperada = 600;
+		int descuentoAbsoluto = 20;
+		
+		List <Atraccion> atraccionesPromObtenida = new ArrayList<Atraccion>();
+		atraccionesPromObtenida.add(new Atraccion("Excursión a la cascada",250,10,21,"Aventura"));
+		atraccionesPromObtenida.add(new Atraccion("Paseo en carruaje por la ciudad",120,5,31,"Aventura"));
+		atraccionesPromObtenida.add(new Atraccion("Excursión al bosque",250,5,16,"Aventura"));
+		Promocion promocionObtenida = new PromocionAbsoluta(atraccionesPromObtenida, descuentoAbsoluto);
+		
+		assertEquals(costoPromocionEsperada, promocionObtenida.getCostoTotal());
+	}
+	
+	@Test
+	public void calculoPromocionPorcentual() {
+		
+		int costoPromocionEsperada = 558;
+		Double descuentoPorcentual = 10.0;
+		
+		List <Atraccion> atraccionesPromObtenida = new ArrayList<Atraccion>();
+		atraccionesPromObtenida.add(new Atraccion("Excursión a la cascada",250,10,21,"Aventura"));
+		atraccionesPromObtenida.add(new Atraccion("Paseo en carruaje por la ciudad",120,5,31,"Aventura"));
+		atraccionesPromObtenida.add(new Atraccion("Excursión al bosque",250,5,16,"Aventura"));
+		Promocion promocionObtenida = new PromocionPorcentual(atraccionesPromObtenida, descuentoPorcentual);
+		
+		assertEquals(costoPromocionEsperada, promocionObtenida.getCostoTotal());
+	}
+	
+	@Test
+	public void calculoPromocionAxB() {
+		
+		int costoPromocionEsperada = 500;
+		Atraccion atraccionGratuita = new Atraccion("Excursión a la cascada",500,10,21,"Aventura");
+		
+		List <Atraccion> atraccionesPromObtenida = new ArrayList<Atraccion>();
+		atraccionesPromObtenida.add(atraccionGratuita);
+		atraccionesPromObtenida.add(new Atraccion("Paseo en carruaje por la ciudad",200,5,31,"Aventura"));
+		atraccionesPromObtenida.add(new Atraccion("Excursión al bosque",300,5,16,"Aventura"));
+		
+		Promocion promocionObtenida = new PromocionAxB(atraccionesPromObtenida, atraccionGratuita);
+		
+		assertEquals(costoPromocionEsperada, promocionObtenida.getCostoTotal());
+	}
 
 }

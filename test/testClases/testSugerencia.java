@@ -8,6 +8,9 @@ import java.util.List;
 import org.junit.Test;
 
 import paradigmas.turismo.models.*;
+import paradigmas.turismo.iterator.AtraccionesIteratorInterface;
+import paradigmas.turismo.iterator.PromocionesIterator;
+import paradigmas.turismo.iterator.PromocionesIteratorInterface;
 import paradigmas.turismo.iterator.Sugerencia;
 import paradigmas.turismo.resumenUsuario.*;
 
@@ -57,8 +60,10 @@ public class testSugerencia {
 		
 		Sugerencia sugerenciaObtenida = new Sugerencia(atracciones1 , promocionesObtenidas, user ,resumen);
 		
-		//terminar
-	
+		PromocionesIteratorInterface obtenida = sugerenciaObtenida.crearPromocionesPreferidasIterator();
+		PromocionesIteratorInterface esperada = sugerenciaEsperada.crearPromocionesPreferidasIterator();
+		
+		assertEquals(esperada, obtenida);
 	}
 	
 	@Test
@@ -91,8 +96,8 @@ public class testSugerencia {
 		Promocion promocion4 = new PromocionAbsoluta(atracciones4, 20);
 		
 		List <Promocion> promocionesEsperadas = new ArrayList<Promocion>(); 
-		promocionesEsperadas.add(promocion1);
-		promocionesEsperadas.add(promocion3);
+		promocionesEsperadas.add(promocion2);
+		promocionesEsperadas.add(promocion4);
 		
 		List <Promocion> promocionesObtenidas = new ArrayList<Promocion>(); 
 		promocionesObtenidas.add(promocion1);
@@ -105,26 +110,76 @@ public class testSugerencia {
 		
 		Sugerencia sugerenciaObtenida = new Sugerencia(atracciones1 , promocionesObtenidas, user ,resumen);
 		
-		//terminar
+		PromocionesIteratorInterface obtenida = sugerenciaObtenida.crearPromocionesNoPreferidasIterator();
+		PromocionesIteratorInterface esperada = sugerenciaEsperada.crearPromocionesNoPreferidasIterator();
+		
+		assertEquals(esperada, obtenida);
 	
 	}
 	
 	@Test
 	public void MostrarAtraccionesDePreferencia() {
 		
-		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "Aventura");
+		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "degustacion");
 		
-		//terminar
-	
+		List <Atraccion> atraccionesAProcesar = new ArrayList<Atraccion>();
+		atraccionesAProcesar.add(new Atraccion("Excursión a la cascada",250,2.5,20,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("Paseo en carruaje por la ciudad",120,1.0,30,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("Excursión al bosque",250,2.5,15,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("viaje en dragon",250,2.5,21,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("laberinthia",120,1.0,31,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("ruinas de aragon",250,2.5,16,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("platos exoticos",207,2.2,16,"degustacion"));
+		
+		List <Atraccion> atraccionesEsperadas = new ArrayList<Atraccion>();
+		atraccionesEsperadas.add(new Atraccion("platos exoticos",207,2.2,16,"degustacion"));
+		
+		ResumenUsuario resumen = null;
+		
+		List <Promocion> promociones= new ArrayList<Promocion>();
+		
+		Sugerencia sugerenciaEsperada = new Sugerencia(atraccionesEsperadas , promociones, user ,resumen);
+		Sugerencia sugerenciaObtenida = new Sugerencia(atraccionesAProcesar , promociones, user ,resumen);
+		
+		AtraccionesIteratorInterface obtenida = sugerenciaObtenida.crearAtraccionesPreferidasIterator();
+		AtraccionesIteratorInterface esperada = sugerenciaEsperada.crearAtraccionesPreferidasIterator();
+		
+		assertEquals(esperada, obtenida);
 	}
 	
 	@Test
 	public void MostrarAtraccionesNoPreferencia() {
 		
-		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "Aventura");
+		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "degustacion");
 		
-		//terminar
-	
+		List <Atraccion> atraccionesAProcesar = new ArrayList<Atraccion>();
+		atraccionesAProcesar.add(new Atraccion("Excursión a la cascada",250,2.5,20,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("Paseo en carruaje por la ciudad",120,1.0,30,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("Excursión al bosque",250,2.5,15,"Aventura"));
+		atraccionesAProcesar.add(new Atraccion("viaje en dragon",250,2.5,21,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("laberinthia",120,1.0,31,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("ruinas de aragon",250,2.5,16,"paisaje"));
+		atraccionesAProcesar.add(new Atraccion("platos exoticos",207,2.2,16,"degustacion"));
+		
+		List <Atraccion> atraccionesEsperadas = new ArrayList<Atraccion>();
+		atraccionesEsperadas.add(new Atraccion("Excursión a la cascada",250,2.5,20,"Aventura"));
+		atraccionesEsperadas.add(new Atraccion("Paseo en carruaje por la ciudad",120,1.0,30,"Aventura"));
+		atraccionesEsperadas.add(new Atraccion("Excursión al bosque",250,2.5,15,"Aventura"));
+		atraccionesEsperadas.add(new Atraccion("viaje en dragon",250,2.5,21,"paisaje"));
+		atraccionesEsperadas.add(new Atraccion("laberinthia",120,1.0,31,"paisaje"));
+		atraccionesEsperadas.add(new Atraccion("ruinas de aragon",250,2.5,16,"paisaje"));
+		
+		ResumenUsuario resumen = null;
+		
+		List <Promocion> promociones= new ArrayList<Promocion>();
+		
+		Sugerencia sugerenciaEsperada = new Sugerencia(atraccionesEsperadas , promociones, user ,resumen);
+		Sugerencia sugerenciaObtenida = new Sugerencia(atraccionesAProcesar , promociones, user ,resumen);
+		
+		AtraccionesIteratorInterface obtenida = sugerenciaObtenida.crearAtraccionesNoPreferidasIterator();
+		AtraccionesIteratorInterface esperada = sugerenciaEsperada.crearAtraccionesNoPreferidasIterator();
+		
+		assertEquals(esperada, obtenida);
 	}
 
 }

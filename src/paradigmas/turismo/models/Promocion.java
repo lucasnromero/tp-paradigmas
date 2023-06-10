@@ -89,6 +89,19 @@ public abstract class Promocion implements Comparable<Promocion> {
 	public String toStringUI() {
 		return "\u001B[1mPromoción\u001B[0m " + this.getTipoAtracciones() + "\n" + "\u2022 Atracciones incluídas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
 	}
+
+	public String[] getNombresAtracciones() {
+
+		String[] nombresAtracciones = new String[this.listaAtracciones.size()];
+		int i = 0;
+
+		for (Atraccion atraccion : this.listaAtracciones) {
+			nombresAtracciones[i] = atraccion.getNombreAtraccion();
+			i++;
+		}
+
+		return nombresAtracciones;
+	}
 	
 	@Override
 	public boolean equals(Object obj) { //para test
@@ -104,19 +117,6 @@ public abstract class Promocion implements Comparable<Promocion> {
 		
 		return this.mismoCupo(other);
 				
-	}
-
-	public String[] getNombresAtracciones() {
-
-		String[] nombresAtracciones = new String[this.listaAtracciones.size()];
-		int i = 0;
-
-		for (Atraccion atraccion : this.listaAtracciones) {
-			nombresAtracciones[i] = atraccion.getNombreAtraccion();
-			i++;
-		}
-
-		return nombresAtracciones;
 	}
 
 }

@@ -59,10 +59,11 @@ public class Proceso {
 
 	private static void guardarYMostrarResumenUsuarioValido(final ResumenUsuario resumenUsuario) {
 		if(resumenUsuario.sugerenciaDisponible()) {
+			  resumenUsuario.crearResumenUsuario();//coro
 			  resumenUsuario.mostrarResumen();
 		  }
 		  
-		String nombreArchivo = resumenUsuario.getUsuario().getNombreUsuario() + "ResumenUsuario";
+		String nombreArchivo = resumenUsuario.getUsuario().getNombreUsuario() + " ResumenUsuario";
 		
 		Archivo archivoResumen = new Archivo(nombreArchivo);
 		archivoResumen.escribirResumenUsuario(resumenUsuario);		
