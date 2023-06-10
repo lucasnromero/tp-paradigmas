@@ -2,6 +2,7 @@ package paradigmas.turismo.manejoArchivos;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -86,6 +87,14 @@ public class Archivo {
 
 		resumenUsuario.crearResumenUsuario();
 
+        String rutaArchivo = "archivos/out/" + this.nombreArchivo + ".out";
+
+        // Elimina el archivo existente para que no se pise
+        File archivoExistente = new File(rutaArchivo);
+        if (archivoExistente.exists()) {
+        	archivoExistente.delete();
+        }
+	        
 		FileWriter fileWriter = null;
 		PrintWriter printerWriter = null;
 		
@@ -130,7 +139,7 @@ public class Archivo {
 			
 			
 
-			fileWriter = new FileWriter("archivos/out/" + this.nombreArchivo + ".out", true);
+			fileWriter = new FileWriter(rutaArchivo, true);
 			printerWriter = new PrintWriter(fileWriter);
 
 			printerWriter.print(linea);

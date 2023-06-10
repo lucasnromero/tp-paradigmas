@@ -48,20 +48,20 @@ public class Proceso {
 		  promocionesIterator(promocionesNoPreferidasIterator, sugerencia, resumenUsuario, scanner);
 		  atraccionesIterator(atraccionesNoPreferidasIterator, sugerencia, resumenUsuario, scanner);
 		  
-		  if(resumenUsuario.sugerenciaDisponible()) {
-			  resumenUsuario.mostrarResumen();
-		  }
-		  
-		  Proceso.guardarResumenUsuarioValido(resumenUsuario);
+		  Proceso.guardarYMostrarResumenUsuarioValido(resumenUsuario);
 		  
 		  }
 		 
-
+		  System.out.println("\u001B[1m\n¡GRACIAS POR UTILIZAR NUESTRO SISTEMA!\u001B[0m \n ");
 		scanner.close();
 
 	}
 
-	private static void guardarResumenUsuarioValido(final ResumenUsuario resumenUsuario) {
+	private static void guardarYMostrarResumenUsuarioValido(final ResumenUsuario resumenUsuario) {
+		if(resumenUsuario.sugerenciaDisponible()) {
+			  resumenUsuario.mostrarResumen();
+		  }
+		  
 		String nombreArchivo = resumenUsuario.getUsuario().getNombreUsuario() + "ResumenUsuario";
 		
 		Archivo archivoResumen = new Archivo(nombreArchivo);
