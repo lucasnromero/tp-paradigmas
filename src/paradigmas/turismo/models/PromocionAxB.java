@@ -20,10 +20,20 @@ public class PromocionAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		return super.toString() + "-Duracion: " + super.getTiempoTotal() + "\n" + "-Precio original: " + super.getCostoTotal() + "\n"
-				+ "-Precio con descuento: " + this.getCostoTotal();
+		return super.toString() + "-Duracion: " + super.getTiempoTotal() + "\n" 
+								+ "-Precio original: " + super.getCostoTotal() + "\n"
+								+ "-Precio promocional: " + this.getCostoTotal()
+								+ "¡La atracción " + this.getAtraccionGratuita().getNombreAtraccion() + " es gratis!";
 	}
 
+	@Override
+	public String toStringUI() {
+		return super.toStringUI() + "\u2022 Duración: " + super.getTiempoTotal() +" horas"+ "\n" 
+									+ "\u2022 Precio original: " + super.getCostoTotal() + "\n"
+									+ "\u2022 Precio promocional: " + this.getCostoTotal()+ "\n"
+									+ "¡La atracción " + this.getAtraccionGratuita().getNombreAtraccion() + " es gratis!";
+	}
+	
 	@Override
 	public int compareTo(final Promocion promocion) {
 		
@@ -34,6 +44,10 @@ public class PromocionAxB extends Promocion {
 
 		return Double.compare(super.getTiempoTotal(), promocion.getTiempoTotal());
 		
+	}
+	
+	public Atraccion getAtraccionGratuita() {
+		return this.atraccionGratuita;
 	}
 
 }

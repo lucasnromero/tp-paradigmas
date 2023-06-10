@@ -87,28 +87,45 @@ public class ResumenUsuario {
 
 	
 	public void mostrarResumen() {
-		
-		System.out.println("\n*USUARIO: " + usuario.getNombreUsuario());
+		System.out.println("\n******************************************************************************************");
+		 System.out.println("\u001B[1mRESUMEN DE COMPRA\u001B[0m \n ");
+		  
+		System.out.println("\u001B[1mUSUARIO:\u001B[0m " + usuario.getNombreUsuario());
 		
 		if(!this.promocionesCompradas.isEmpty()){
-			System.out.println("\nUsted Compró las siguientes promociones: ");
+			System.out.println("\n\u001B[1mUsted compró las siguientes promociones: \u001B[0m");
 		}
 		
 		for(Promocion promocion: this.promocionesCompradas) {
-			System.out.println("\n" + promocion.toString());
+			System.out.println("\n" + promocion.toStringUI());
 		}
 		
 		if(!this.atraccionesCompradas.isEmpty()) {
-			System.out.println("\n*Usted Compró las siguientes atracciones:");
+			System.out.println("\n\u001B[1mUsted compró las siguientes atracciones:\u001B[0m\n");
 		}
 		
 		for(Atraccion atraccion: this.atraccionesCompradas) {
-			System.out.println(atraccion.toString());
+			System.out.println(atraccion.toStringUI());
 		}
 		
-		System.out.println("\n*Gastó en total: " + this.gastoTotal); 
-		System.out.println("*Tiempo a invertir: " + this.tiempoTotal); 
+		System.out.println("\n\u001B[1m\u2022 Gastó en total: \u001B[0m" + this.gastoTotal); 
+		System.out.println("\u001B[1m\u2022 Tiempo a invertir \u001B[0m: " + this.tiempoTotal + " horas"); 
 		
+		System.out.println("\u001B[1m\n¡GRACIAS POR COMPRAR CON NOSOTROS!\u001B[0m \n ");
+		System.out.println("********************************************************************************************\n");
+		
+	}
+	
+	public boolean sugerenciaDisponible() {
+		
+		if(this.atraccionesCompradas.size() == 0 && this.promocionesCompradas.size() == 0) {	
+			System.out.println("\nNo es posible hacerle una sugerencia de compra.");
+			System.out.println("Fin de la compra.\n");
+			System.out.println("********************************************************************************************\n");
+			return false;
+		}
+		
+		return true;
 	}
 
 

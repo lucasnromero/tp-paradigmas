@@ -68,7 +68,10 @@ public class Archivo {
 	}
 
 	private Usuario getUsuarioLeido(String lineaLeida) {
-
+		
+		//formato de usuario en el codigo:
+		//nombreUsuario|tiempoDisponible|presupuesto|atraccionPreferida
+		
 		String[] partes = lineaLeida.split("\\|");
 
 		String nombreUsuario = partes[0];
@@ -85,29 +88,47 @@ public class Archivo {
 
 		FileWriter fileWriter = null;
 		PrintWriter printerWriter = null;
-
+		
+		String linea = "RESUMEN DE COMPRA \n";
+		
 		try {
-
-			String nombreUsuario = resumenUsuario.getUsuario().getNombreUsuario();
-			int gastoTotal = resumenUsuario.getGastoTotal();
-			double tiempoInvertido = resumenUsuario.getTiempoTotal();
-			String[] nombresAtracciones = this.atraccionesCompradas(resumenUsuario.getAtraccionesCompradas());
-			//String[] nombresPromociones = this.promocionesCompradas(resumenUsuario.getPromocionesCompradas());
 			
-			String promos = "";
-			for(Promocion promocion : resumenUsuario.getPromocionesCompradas()) {
-				promos = promos + "\n*" + promocion.toString() + "\n";
+			if(resumenUsuario.getAtraccionesCompradas().size() > 0 || 
+			   resumenUsuario.getPromocionesCompradas().size() > 0) {
+				
+				String promoAux = "";
+				String atraccionAux = "";
+				
+				for(Promocion promocion : resumenUsuario.getPromocionesCompradas()) {
+					promoAux = promoAux + "\n" + promocion.toString() + "\n";
+				}
+				
+				if(promoAux == "") {
+					promoAux = "No se compraron Promociones.\n" ;
+				}
+				
+				for(Atraccion atraccion : resumenUsuario.getAtraccionesCompradas()) {
+					atraccionAux = atraccionAux + "\n" + atraccion.toString() + "\n";
+				}
+				
+				if(atraccionAux == "") {
+					atraccionAux = "No se compraron Atracciones.\n" ;
+				}
+
+				 linea +=  "USUARIO: " + resumenUsuario.getUsuario().getNombreUsuario() +  "\n\n" 
+								+ "Atracciones compradas:\n" + atraccionAux + "\n" 
+								+ "Promociones compradas:\n" + promoAux + "\n" 
+								+ "Gasto Total: " + resumenUsuario.getGastoTotal() + "\n"
+								+ "Tiempo Invertido: " + resumenUsuario.getTiempoTotal() + "\n\n\n";
+				
+			} else {
+				linea +=  "USUARIO: " + resumenUsuario.getUsuario().getNombreUsuario() +  "\n\n" 
+						+ "No fue posible realizar la compra.\n\n" 
+						+ "Gasto Total: " + resumenUsuario.getGastoTotal() + "\n"
+						+ "Tiempo Invertido: " + resumenUsuario.getTiempoTotal() + "\n\n\n";
 			}
-
-			/*String linea = "Nombre: " + nombreUsuario + "\n" + "Gasto Total: " + gastoTotal + "\n"
-					+ "Tiempo Invertido: " + tiempoInvertido + "\n" + "Atracciones compradas: "
-					+ Arrays.toString(nombresAtracciones) + "\n" + "Promociones compradas:"
-					+ Arrays.toString(nombresPromociones) + "\n\n\n";*/
 			
-			String linea = "Nombre: " + nombreUsuario +  "\n\n" + "Atracciones compradas: "
-					+ Arrays.toString(nombresAtracciones) + "\n\n" + "Promociones compradas:"
-					+ promos + "\nGasto Total: " + gastoTotal + "\n"
-							+ "Tiempo Invertido: " + tiempoInvertido + "\n\n\n";
+			
 
 			fileWriter = new FileWriter("archivos/out/" + this.nombreArchivo + ".out", true);
 			printerWriter = new PrintWriter(fileWriter);
@@ -130,41 +151,6 @@ public class Archivo {
 		}
 	}
 
-	private String[] atraccionesCompradas(final List<Atraccion> atracciones) {
-
-		String[] nombresAtraccionesCompradas = new String[atracciones.size()];
-
-		int i = 0;
-
-		for (Atraccion atraccion : atracciones) {
-			nombresAtraccionesCompradas[i] = atraccion.getNombreAtraccion();
-			i++;
-		}
-
-		return nombresAtraccionesCompradas;
-	}
-
-	private String[] promocionesCompradas(final List<Promocion> promociones) { //quedó obsoleta en base a mi solucion CORO
-
-		String[] nombresPromocionesCompradas = null;
-
-		for (Promocion promocion : promociones) {
-
-			List<Atraccion> atraccionesDeLaPromocion = promocion.getAtracciones();
-			nombresPromocionesCompradas = new String[atraccionesDeLaPromocion.size()];
-			int i = 0;
-
-			for (Atraccion atraccion : atraccionesDeLaPromocion) {
-
-				nombresPromocionesCompradas[i] = atraccion.getNombreAtraccion();
-				i++;
-			}
-
-		}
-
-		return nombresPromocionesCompradas;
-	}
-	
 	//ENDREGION Usuario
 	
 	public List<Atraccion> leerArchivoAtracciones() {
@@ -208,7 +194,9 @@ public class Archivo {
 	}
 
 	private Atraccion getAtraccionLeida(String lineaLeida) {
-
+		//Formato atraccion
+		//nombreAtraccion|costoVisita|promedioTiempo|cupo|tipoAtraccion
+		
 		String[] partes = lineaLeida.split("\\|");
 
 		String nombreAtraccion = partes[0];
@@ -262,6 +250,15 @@ public class Archivo {
 
 	private Promocion getPromocionLeida(String lineaLeida, List<Atraccion> atraccionesLeidas) {
 
+		//formato Promocion AxB
+		//atraccion1;atraccion2;atraccionN|atraccionGratis(Atraccion2xej)|TipoDeAtracciones
+		
+		//formato Promocion Porcentual
+		//atraccion1;atraccion2;atraccionN|porcentajeDescuento|TipoDeAtracciones
+		
+		//formato Promocion Absoluta
+		//atraccion1;atraccion2;atraccionN|menosPrecio|TipoDeAtracciones
+		
 		String[] partes = lineaLeida.split("\\|");
 
 		String[] atraccionesDelPaquete = partes[0].split(";");
