@@ -146,13 +146,13 @@ public class OfertasTest {
 	private void ordenPromocionesTest(final PromocionesIteratorInterface promocionesPreferidasIterator) {
 
 		List<Atraccion> listaAtraccionesPromocion1 = Arrays.asList(
-				new Atraccion("El Reino de Wakanda", 200, 8, 0, "Aventura"),
-				new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 0, "Aventura"),
-				new Atraccion("La Fortaleza de Loki", 15, 9, 0, "Aventura"));
+				new Atraccion("El Reino de Wakanda", 200, 8, 3, "Aventura"),
+				new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 2, "Aventura"),
+				new Atraccion("La Fortaleza de Loki", 15, 9, 10, "Aventura"));
 
-		List<Atraccion> listaAtraccionesPromocion2 = Arrays.asList(new Atraccion("Wakanda", 200, 5, 0, "Aventura"),
-				new Atraccion("El Cañón del Capitán América", 170, 6, 0, "Aventura"),
-				new Atraccion("La Cueva de Black Widow", 90, 2, 0, "Aventura"));
+		List<Atraccion> listaAtraccionesPromocion2 = Arrays.asList(new Atraccion("Wakanda", 200, 5, 10, "Aventura"),
+				new Atraccion("El Cañón del Capitán América", 170, 6, 20, "Aventura"),
+				new Atraccion("La Cueva de Black Widow", 90, 2, 3, "Aventura"));
 
 		Promocion promocion1 = new PromocionAbsoluta(listaAtraccionesPromocion1, 50);
 		Promocion promocion2 = new PromocionPorcentual(listaAtraccionesPromocion2, 30);
@@ -167,12 +167,12 @@ public class OfertasTest {
 
 	private void ordenAtraccionesTest(final AtraccionesIteratorInterface atraccionesPreferidasIterator) {
 
-		Atraccion atraccion1 = new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 0, "Aventura");
-		Atraccion atraccion2 = new Atraccion("El Reino de Wakanda", 200, 8, 0, "Aventura");
-		Atraccion atraccion3 = new Atraccion("Wakanda", 200, 5, 0, "Aventura");
-		Atraccion atraccion4 = new Atraccion("El Cañón del Capitán América", 170, 6, 0, "Aventura");
-		Atraccion atraccion5 = new Atraccion("La Cueva de Black Widow", 90, 2, 0, "Aventura");
-		Atraccion atraccion6 = new Atraccion("La Fortaleza de Loki", 15, 9, 0, "Aventura");
+		Atraccion atraccion1 = new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 3, "Aventura");
+		Atraccion atraccion2 = new Atraccion("El Reino de Wakanda", 200, 8, 4, "Aventura");
+		Atraccion atraccion3 = new Atraccion("Wakanda", 200, 5, 10, "Aventura");
+		Atraccion atraccion4 = new Atraccion("El Cañón del Capitán América", 170, 6, 30, "Aventura");
+		Atraccion atraccion5 = new Atraccion("La Cueva de Black Widow", 90, 2, 5, "Aventura");
+		Atraccion atraccion6 = new Atraccion("La Fortaleza de Loki", 15, 9, 8, "Aventura");
 
 		List<Atraccion> listaAtraccionesEsperada = Arrays.asList(atraccion1, atraccion2, atraccion3, atraccion4,
 				atraccion5, atraccion6);
