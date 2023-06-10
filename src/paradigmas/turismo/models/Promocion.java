@@ -2,6 +2,7 @@ package paradigmas.turismo.models;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Promocion implements Comparable<Promocion> {
 
@@ -66,10 +67,38 @@ public abstract class Promocion implements Comparable<Promocion> {
 		for (Atraccion atraccion : this.listaAtracciones)
 			atraccion.reducirCupo();
 	}
+	
+	public boolean mismoCupo(Promocion other) { //para test
+
+		for(Atraccion atraccionOther : other.listaAtracciones) {
+			for (Atraccion atraccionThis : this.listaAtracciones) {
+				if(atraccionOther.getNombreAtraccion() == atraccionThis.getNombreAtraccion() && atraccionOther.getCupo() != atraccionThis.getCupo()){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 
 	@Override
 	public String toString() {
 		return "PACK " + this.getTipoAtracciones() + "\n" + "-Atracciones incluidas: " + Arrays.toString(this.getNombresAtracciones()) + "\n";
+	}
+	
+	@Override
+	public boolean equals(Object obj) { //para test
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		if(!Objects.equals(this.toString(), other.toString()))
+			return false;
+		
+		return this.mismoCupo(other);
+				
 	}
 
 	public String[] getNombresAtracciones() {
