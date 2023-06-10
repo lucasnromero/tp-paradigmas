@@ -2,11 +2,25 @@ package paradigmas.turismo.iterator;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.Usuario;
 
 public class PromocionesIterator implements PromocionesIteratorInterface {
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PromocionesIterator other = (PromocionesIterator) obj;
+		return Objects.equals(listaPromociones, other.listaPromociones) && posicionActual == other.posicionActual
+				&& Objects.equals(usuario, other.usuario);
+	}
 
 	private Usuario usuario;
 	private List<Promocion> listaPromociones;

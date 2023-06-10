@@ -1,5 +1,7 @@
 package paradigmas.turismo.models;
 
+import java.util.Objects;
+
 public class Usuario {
 
 	private String nombreUsuario;
@@ -16,6 +18,21 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.atraccionPreferida = atraccionPreferida;
 		this.nombreUsuario = nombreUsuario;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(atraccionPreferida, other.atraccionPreferida)
+				&& Objects.equals(nombreUsuario, other.nombreUsuario) && presupuesto == other.presupuesto
+				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible);
 	}
 
 	public void disminuirDinero(final int dinero) {
