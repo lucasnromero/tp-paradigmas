@@ -11,21 +11,6 @@ import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 
 public class AtraccionesIterator implements AtraccionesIteratorInterface {
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AtraccionesIterator other = (AtraccionesIterator) obj;
-		return Objects.equals(listaAtracciones, other.listaAtracciones) && posicionActual == other.posicionActual
-				&& Objects.equals(resumenHastaElMomento, other.resumenHastaElMomento)
-				&& Objects.equals(usuario, other.usuario);
-	}
-
 	private Usuario usuario;
 	private ResumenUsuario resumenHastaElMomento;
 	private List<Atraccion> listaAtracciones;
@@ -94,5 +79,19 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 
 	public List<Atraccion> getAtraccionesCollection() {
 		return Collections.unmodifiableList(this.listaAtracciones);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AtraccionesIterator other = (AtraccionesIterator) obj;
+		return Objects.equals(listaAtracciones, other.listaAtracciones) && posicionActual == other.posicionActual
+				&& Objects.equals(resumenHastaElMomento, other.resumenHastaElMomento)
+				&& Objects.equals(usuario, other.usuario);
 	}
 }
