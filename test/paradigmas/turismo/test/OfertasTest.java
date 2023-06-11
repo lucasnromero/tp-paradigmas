@@ -26,13 +26,78 @@ public class OfertasTest {
 	@Before
 	public void setup() {
 
-		Archivo archivoAtracciones = new Archivo("atracciones");
-		Archivo archivoPromociones = new Archivo("promociones");
-		Archivo archivoUsuarios = new Archivo("usuarios");
+		this.setAtracciones();
+		this.setPromociones();
+		this.setUsuarios();
+	}
 
-		this.listaAtracciones = archivoAtracciones.leerArchivoAtracciones();
-		this.listaPromociones = archivoPromociones.leerArchivoPromociones(this.listaAtracciones);
-		this.listaUsuarios = archivoUsuarios.leerArchivoUsuarios();
+	private void setAtracciones() {
+
+		Atraccion atraccionAventura1 = new Atraccion("El Reino de Wakanda", 200, 8, 4, "Aventura");
+		Atraccion atraccionAventura2 = new Atraccion("El Cañón del Capitán América", 170, 6, 30, "Aventura");
+		Atraccion atraccionAventura3 = new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 3, "Aventura");
+		Atraccion atraccionAventura4 = new Atraccion("Wakanda", 200, 5, 10, "Aventura");
+		Atraccion atraccionAventura5 = new Atraccion("La Fortaleza de Loki", 15, 9, 8, "Aventura");
+		Atraccion atraccionAventura6 = new Atraccion("La Cueva de Black Widow", 90, 2, 5, "Aventura");
+
+		Atraccion atraccionPaisaje1 = new Atraccion("El Santuario de Asgard", 200, 8, 4, "Paisaje");
+		Atraccion atraccionPaisaje2 = new Atraccion("El Cañón de Loki", 170, 6, 30, "Paisaje");
+		Atraccion atraccionPaisaje3 = new Atraccion("El Santuario de Asgard", 220, 9, 3, "Paisaje");
+		Atraccion atraccionPaisaje4 = new Atraccion("El Palacio de Thanos", 200, 5, 10, "Paisaje");
+
+		Atraccion atraccionDegustacion1 = new Atraccion("El Refugio de Hulk", 200, 8, 4, "Degustacion");
+		Atraccion atraccionDegustacion2 = new Atraccion("La Playa de los Asgardianos", 170, 6, 30, "Degustacion");
+		Atraccion atraccionDegustacion3 = new Atraccion("La Torre de los Vengadores", 220, 9, 3, "Degustacion");
+
+		this.listaAtracciones = Arrays.asList(atraccionAventura1, atraccionAventura2, atraccionAventura3,
+				atraccionAventura4, atraccionAventura5, atraccionAventura6, atraccionPaisaje1, atraccionPaisaje2,
+				atraccionPaisaje3, atraccionPaisaje4, atraccionDegustacion1, atraccionDegustacion2,
+				atraccionDegustacion3);
+	}
+
+	private void setPromociones() {
+
+		List<Atraccion> listaAtraccionesPromocionAventura1 = Arrays.asList(
+				new Atraccion("El Reino de Wakanda", 200, 8, 3, "Aventura"),
+				new Atraccion("El Laboratorio del Dr. Strange", 220, 9, 2, "Aventura"),
+				new Atraccion("La Fortaleza de Loki", 15, 9, 10, "Aventura"));
+
+		List<Atraccion> listaAtraccionesPromocionAventura2 = Arrays.asList(
+				new Atraccion("Wakanda", 200, 5, 10, "Aventura"),
+				new Atraccion("El Cañón del Capitán América", 170, 6, 20, "Aventura"),
+				new Atraccion("La Cueva de Black Widow", 90, 2, 3, "Aventura"));
+
+		Promocion promocionAventura1 = new PromocionAbsoluta(listaAtraccionesPromocionAventura1, 50);
+		Promocion promocionAventura2 = new PromocionPorcentual(listaAtraccionesPromocionAventura2, 30);
+
+		List<Atraccion> listaAtraccionesPromocionPaisaje1 = Arrays.asList(
+				new Atraccion("El Santuario de Asgard", 200, 8, 4, "Paisaje"),
+				new Atraccion("El Cañón de Loki", 170, 6, 30, "Paisaje"));
+
+		List<Atraccion> listaAtraccionesPromocionPaisaje2 = Arrays.asList(
+				new Atraccion("El Santuario de Asgard", 220, 9, 3, "Paisaje"),
+				new Atraccion("El Palacio de Thanos", 200, 5, 10, "Paisaje"));
+
+		Promocion promocionPaisaje1 = new PromocionAbsoluta(listaAtraccionesPromocionPaisaje1, 50);
+		Promocion promocionPaisaje2 = new PromocionPorcentual(listaAtraccionesPromocionPaisaje2, 30);
+
+		List<Atraccion> listaAtraccionesPromocionDegustacion1 = Arrays.asList(
+				new Atraccion("El Refugio de Hulk", 200, 8, 4, "Degustacion"),
+				new Atraccion("La Playa de los Asgardianos", 170, 6, 30, "Degustacion"));
+
+		Promocion promocionDugustacion1 = new PromocionAbsoluta(listaAtraccionesPromocionPaisaje1, 50);
+
+		this.listaPromociones = Arrays.asList(promocionAventura1, promocionAventura2, promocionPaisaje1,
+				promocionPaisaje2, promocionDugustacion1);
+	}
+
+	private void setUsuarios() {
+
+		Usuario usuario1 = new Usuario("Iron Man", 100, 1000, "Aventura");
+		Usuario usuario2 = new Usuario("Capitan America", 100, 1000, "Paisaje");
+		Usuario usuario3 = new Usuario("Thor", 100, 1000, "Degustacion");
+
+		this.listaUsuarios = Arrays.asList(usuario1, usuario2, usuario3);
 	}
 
 	/*

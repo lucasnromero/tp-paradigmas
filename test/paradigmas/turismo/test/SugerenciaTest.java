@@ -13,7 +13,7 @@ import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 public class SugerenciaTest {
 
 	@Test
-	public void MostrarPromocionesDePreferencia() {
+	public void mostrarPromocionesDePreferencia() {
 		
 		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "Aventura");
 		
@@ -63,7 +63,7 @@ public class SugerenciaTest {
 	}
 	
 	@Test
-	public void MostrarPromocionesNoPreferencia() {
+	public void mostrarPromocionesNoPreferencia() {
 		
 		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "Aventura");
 		
@@ -114,7 +114,7 @@ public class SugerenciaTest {
 	}
 	
 	@Test
-	public void MostrarAtraccionesDePreferencia() {
+	public void mostrarAtraccionesDePreferencia() {
 		
 		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "degustacion");
 		
@@ -144,7 +144,7 @@ public class SugerenciaTest {
 	}
 	
 	@Test
-	public void MostrarAtraccionesNoPreferencia() {
+	public void mostrarAtraccionesNoPreferencia() {
 		
 		Usuario user = new Usuario(	"Fernando", 20.5 , 4000, "degustacion");
 		
