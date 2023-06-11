@@ -2,14 +2,15 @@ package paradigmas.turismo.test;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import paradigmas.turismo.iterator.AtraccionesIteratorInterface;
 import paradigmas.turismo.iterator.PromocionesIteratorInterface;
 import paradigmas.turismo.iterator.Sugerencia;
 import paradigmas.turismo.iterator.SugerenciaInterface;
-import paradigmas.turismo.manejoArchivos.Archivo;
 import paradigmas.turismo.models.Atraccion;
 import paradigmas.turismo.models.Promocion;
 import paradigmas.turismo.models.PromocionAbsoluta;
@@ -23,7 +24,7 @@ public class OfertasTest {
 	private List<Promocion> listaPromociones;
 	private List<Usuario> listaUsuarios;
 
-	@Before
+	@Before 
 	public void setup() {
 
 		this.setAtracciones();
@@ -85,7 +86,7 @@ public class OfertasTest {
 				new Atraccion("El Refugio de Hulk", 200, 8, 4, "Degustacion"),
 				new Atraccion("La Playa de los Asgardianos", 170, 6, 30, "Degustacion"));
 
-		Promocion promocionDugustacion1 = new PromocionAbsoluta(listaAtraccionesPromocionPaisaje1, 50);
+		Promocion promocionDugustacion1 = new PromocionAbsoluta(listaAtraccionesPromocionDegustacion1, 50);
 
 		this.listaPromociones = Arrays.asList(promocionAventura1, promocionAventura2, promocionPaisaje1,
 				promocionPaisaje2, promocionDugustacion1);
