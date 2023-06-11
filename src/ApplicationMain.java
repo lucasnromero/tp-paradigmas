@@ -1,9 +1,9 @@
-import unlam.turismo.consola.ManejoConsola;
+import paradigmas.turismo.procesamiento.Proceso;
 
 public class ApplicationMain {
 
 	public static void main(String[] args) {
-		ManejoConsola.iniciarProcesamiento();
+		Proceso.iniciarProcesamiento();
 	}
 
 }
