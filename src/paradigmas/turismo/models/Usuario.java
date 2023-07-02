@@ -20,7 +20,6 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

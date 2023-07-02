@@ -56,8 +56,7 @@ public class Atraccion implements Comparable<Atraccion> {
 		return "\u001B[1mAtracción:\u001B[0m " + this.nombreAtraccion + "\n" + "\u2022Precio: " + this.costoVisita
 				+ "\n" + "\u2022Duración: " + this.promedioDeTiempo + " horas\n";
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(costoVisita, cupo, nombreAtraccion, promedioDeTiempo, tipoAtraccion);
