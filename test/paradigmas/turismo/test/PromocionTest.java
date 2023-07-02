@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import paradigmas.turismo.models.*;
+import paradigmas.turismo.resumenUsuario.ResumenUsuario;
 
 public class PromocionTest {
 
@@ -76,5 +77,28 @@ public class PromocionTest {
 		
 		assertEquals(costoPromocionEsperada, promocionObtenida.getCostoTotal());
 	}
+	
+	@Test
+	public void comprarPromocionCupoTest() {
+		Usuario usuario = new Usuario("Tony Stark", 35.2, 500, "Paisaje");
+		
+		List<Atraccion> atraccionesPromocion = new ArrayList<>();
+		ResumenUsuario resumen = new ResumenUsuario(usuario);
+		
+		Atraccion gratuita = new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Aventura");
+
+		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Aventura"));
+		atraccionesPromocion.add(gratuita);
+		
+		int valorEsperado = atraccionesPromocion.get(2).getCupo();
+	
+		resumen.agregarPromocion(new PromocionAxB(atraccionesPromocion, gratuita));
+		
+		assertEquals(valorEsperado - 1, atraccionesPromocion.get(2).getCupo());
+	}
+	
+	
+	
 
 }
