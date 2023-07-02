@@ -9,8 +9,6 @@ public interface PromocionesIteratorInterface {
 	public boolean hasNext();
 
 	public Promocion getNext();
-
-	public void reset();
 	
 	public List<Promocion> getPromocionesCollection();
 }
