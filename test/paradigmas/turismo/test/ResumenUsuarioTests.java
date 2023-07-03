@@ -111,6 +111,24 @@ public class ResumenUsuarioTests {
 		assertEquals(gastoEsperado, resumen.getGastoTotal(), 0.01);
 
 	}
+	
+	
+	@Test
+	public void atraccionSinPresupuestoAtraccionTest() {
+		Usuario usuario = new Usuario("Clint Barton", 35.2, 50, "Paisaje");
+
+		ResumenUsuario resumen = new ResumenUsuario(usuario);
+
+		resumen.agregarAtraccion(new Atraccion("Paseo en bote", 150, 3.0, 40, "Paisaje"));
+
+		resumen.crearResumenUsuario();
+
+		double tiempoEsperado = 35.2 - 3.0;
+		int gastoEsperado = 50 - 150;
+		
+		assertEquals(tiempoEsperado, usuario.getTiempoDisponible(), 0.01);
+		assertEquals(gastoEsperado, usuario.getPresupuesto(), 0.01);
+	}
 
 	@Test
 	public void getUsuarioTest() {
