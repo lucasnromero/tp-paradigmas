@@ -58,11 +58,6 @@ public class Atraccion implements Comparable<Atraccion> {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(costoVisita, cupo, nombreAtraccion, promedioDeTiempo, tipoAtraccion);
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

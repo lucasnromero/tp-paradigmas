@@ -10,7 +10,5 @@ public interface AtraccionesIteratorInterface {
 
 	public Atraccion getNext();
 
-	public void reset();
-	
 	public List<Atraccion> getAtraccionesCollection();
 }

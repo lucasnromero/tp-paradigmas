@@ -45,11 +45,6 @@ public class PromocionesIterator implements PromocionesIteratorInterface {
 		return null;
 	}
 
-	@Override
-	public void reset() {
-		this.posicionActual = 0;
-	}
-
 	private boolean puedeComprarse(final Promocion promocion) {
 		return (promocion.hayCupo()) && (this.usuario.getTiempoDisponible() >= promocion.getTiempoTotal())
 				&& (this.usuario.getPresupuesto() >= promocion.getCostoTotal());

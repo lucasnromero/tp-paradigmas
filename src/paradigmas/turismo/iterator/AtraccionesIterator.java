@@ -50,11 +50,6 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 		return null;
 	}
 
-	@Override
-	public void reset() {
-		this.posicionActual = 0;
-	}
-
 	private boolean puedeSerComprada(final Atraccion atraccion) {
 		return (atraccion.getCupo() != 0) && (this.usuario.getTiempoDisponible() >= atraccion.getPromedioDeTiempo())
 				&& (this.usuario.getPresupuesto() >= atraccion.getCostoVisita())

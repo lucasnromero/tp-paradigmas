@@ -79,7 +79,7 @@ public abstract class Promocion implements Comparable<Promocion> {
 				+ Arrays.toString(this.getNombresAtracciones()) + "\n";
 	}
 
-	public String[] getNombresAtracciones() {
+	private String[] getNombresAtracciones() {
 
 		String[] nombresAtracciones = new String[this.listaAtracciones.size()];
 		int i = 0;
@@ -90,11 +90,6 @@ public abstract class Promocion implements Comparable<Promocion> {
 		}
 
 		return nombresAtracciones;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(listaAtracciones);
 	}
 
 	@Override
