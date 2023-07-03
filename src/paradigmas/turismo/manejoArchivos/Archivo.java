@@ -206,10 +206,10 @@ public class Archivo {
 		String nombreAtraccion = partes[0];
 		int costoVisita = Integer.parseInt(partes[1]);
 		double promedioTiempo = Double.parseDouble(partes[2]);
-		int cupo = Integer.parseInt(partes[3]);
 		String tipoAtraccion = partes[4];
 
-		return new Atraccion(nombreAtraccion, costoVisita, promedioTiempo, cupo, tipoAtraccion);
+
+		return new Atraccion(nombreAtraccion, costoVisita, promedioTiempo, tipoAtraccion);
 	}
 
 	public List<Promocion> leerArchivoPromociones(List<Atraccion> atraccionesLeidas) {

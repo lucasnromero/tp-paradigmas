@@ -52,9 +52,10 @@ public class ResumenUsuario {
 
 	public void agregarAtraccion(final Atraccion atraccion) {
 		this.atraccionesCompradas.add(atraccion);
-		this.usuario.disminuirDinero(atraccion.getCostoVisita());
-		this.usuario.disminuirTiempoDisponible(atraccion.getPromedioDeTiempo());
-		atraccion.reducirCupo();
+		this.usuario.compraAtraccion(atraccion.getCostoVisita(), atraccion.getPromedioDeTiempo());
+//		this.usuario.disminuirDinero(atraccion.getCostoVisita());
+//		this.usuario.disminuirTiempoDisponible(atraccion.getPromedioDeTiempo());
+
 	}
 
 	public List<Promocion> getPromocionesCompradas() {
@@ -63,9 +64,10 @@ public class ResumenUsuario {
 
 	public void agregarPromocion(final Promocion promocion) {
 		this.promocionesCompradas.add(promocion);
-		this.usuario.disminuirDinero(promocion.getCostoTotal());
-		this.usuario.disminuirTiempoDisponible(promocion.getTiempoTotal());
-		promocion.reducirCupo();
+		this.usuario.compraAtraccion(promocion.getCostoTotal(), promocion.getTiempoTotal());
+
+//		this.usuario.disminuirDinero(promocion.getCostoTotal());
+//		this.usuario.disminuirTiempoDisponible(promocion.getTiempoTotal());
 	}
 
 	public Usuario getUsuario() {

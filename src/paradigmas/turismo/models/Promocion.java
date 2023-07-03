@@ -35,24 +35,6 @@ public abstract class Promocion implements Comparable<Promocion> {
 		return tiempoTotal;
 	}
 
-	public int getCupoTotal() {
-
-		int cupoTotal = 0;
-
-		for (Atraccion atraccion : this.listaAtracciones)
-			cupoTotal += atraccion.getCupo();
-
-		return cupoTotal;
-	}
-
-	public boolean hayCupo() {
-
-		for (Atraccion atraccion : this.listaAtracciones)
-			if (atraccion.getCupo() == 0)
-				return false;
-
-		return true;
-	}
 
 	public String getTipoAtracciones() {
 		return this.listaAtracciones.get(0).getTipoAtraccion();
@@ -60,12 +42,6 @@ public abstract class Promocion implements Comparable<Promocion> {
 
 	public List<Atraccion> getAtracciones() {
 		return this.listaAtracciones;
-	}
-
-	public void reducirCupo() {
-
-		for (Atraccion atraccion : this.listaAtracciones)
-			atraccion.reducirCupo();
 	}
 
 	@Override

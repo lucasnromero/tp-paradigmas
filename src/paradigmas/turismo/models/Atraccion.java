@@ -7,10 +7,10 @@ public class Atraccion implements Comparable<Atraccion> {
 	private String nombreAtraccion;
 	private int costoVisita;
 	private double promedioDeTiempo;
-	private int cupo;
 	private String tipoAtraccion;
 
-	public Atraccion(final String nombreAtraccion, final int costoVisita, final double promedioDeTiempo, final int cupo,
+
+	public Atraccion(final String nombreAtraccion, final int costoVisita, final double promedioDeTiempo,
 			final String tipoAtraccion) {
 
 		super();
@@ -18,7 +18,6 @@ public class Atraccion implements Comparable<Atraccion> {
 		this.nombreAtraccion = nombreAtraccion;
 		this.costoVisita = costoVisita;
 		this.promedioDeTiempo = promedioDeTiempo;
-		this.cupo = cupo;
 		this.tipoAtraccion = tipoAtraccion;
 	}
 
@@ -34,17 +33,12 @@ public class Atraccion implements Comparable<Atraccion> {
 		return this.promedioDeTiempo;
 	}
 
-	public int getCupo() {
-		return this.cupo;
-	}
+
 
 	public String getTipoAtraccion() {
 		return this.tipoAtraccion;
 	}
 
-	public void reducirCupo() {
-		this.cupo--;
-	}
 
 	@Override
 	public String toString() {
@@ -66,8 +60,7 @@ public class Atraccion implements Comparable<Atraccion> {
 		if (getClass() != obj.getClass())
 			return false;
 		Atraccion other = (Atraccion) obj;
-		return costoVisita == other.costoVisita && cupo == other.cupo
-				&& Objects.equals(nombreAtraccion, other.nombreAtraccion)
+		return costoVisita == other.costoVisita && Objects.equals(nombreAtraccion, other.nombreAtraccion)
 				&& Double.doubleToLongBits(promedioDeTiempo) == Double.doubleToLongBits(other.promedioDeTiempo)
 				&& Objects.equals(tipoAtraccion, other.tipoAtraccion);
 	}

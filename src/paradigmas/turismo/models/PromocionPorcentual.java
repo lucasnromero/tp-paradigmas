@@ -45,7 +45,6 @@ public class PromocionPorcentual extends Promocion {
 
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

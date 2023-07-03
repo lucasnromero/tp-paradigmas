@@ -51,7 +51,7 @@ public class AtraccionesIterator implements AtraccionesIteratorInterface {
 	}
 
 	private boolean puedeSerComprada(final Atraccion atraccion) {
-		return (atraccion.getCupo() != 0) && (this.usuario.getTiempoDisponible() >= atraccion.getPromedioDeTiempo())
+		return (this.usuario.getTiempoDisponible() >= atraccion.getPromedioDeTiempo())
 				&& (this.usuario.getPresupuesto() >= atraccion.getCostoVisita())
 				&& !this.estabaEnUnPaqueteComprado(atraccion);
 	}

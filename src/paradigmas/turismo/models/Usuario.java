@@ -34,11 +34,10 @@ public class Usuario {
 				&& Double.doubleToLongBits(tiempoDisponible) == Double.doubleToLongBits(other.tiempoDisponible);
 	}
 
-	public void disminuirDinero(final int dinero) {
-		this.presupuesto -= dinero;
-	}
 
-	public void disminuirTiempoDisponible(final double tiempoDisponible) {
+
+	public void compraAtraccion(final int dinero, final double tiempoDisponible) {
+		this.presupuesto -= dinero;
 		this.tiempoDisponible -= tiempoDisponible;
 	}
 

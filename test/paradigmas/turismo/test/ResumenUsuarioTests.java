@@ -12,6 +12,7 @@ import org.junit.Test;
 
 public class ResumenUsuarioTests {
 
+
 	@Test
 	public void calcularCostoTotalTest() {
 
@@ -20,15 +21,15 @@ public class ResumenUsuarioTests {
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
 
-		resumen.agregarAtraccion(new Atraccion("Torre del Sabor", 150, 2.5, 50, "Degustación"));
-		resumen.agregarAtraccion(new Atraccion("Mirador de Ensueño", 200, 3.0, 40, "Paisaje"));
-		resumen.agregarAtraccion(new Atraccion("Ruta de los Sabores", 180, 2.0, 30, "Degustación"));
-		resumen.agregarAtraccion(new Atraccion("Aventura Extrema", 120, 1.5, 20, "Aventura"));
-		resumen.agregarAtraccion(new Atraccion("Valle Encantado", 160, 2.5, 35, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Torre del Sabor", 150, 2.5, "Degustación"));
+		resumen.agregarAtraccion(new Atraccion("Mirador de Ensueño", 200, 3.0, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Ruta de los Sabores", 180, 2.0, "Degustación"));
+		resumen.agregarAtraccion(new Atraccion("Aventura Extrema", 120, 1.5, "Aventura"));
+		resumen.agregarAtraccion(new Atraccion("Valle Encantado", 160, 2.5, "Paisaje"));
 
-		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Aventura"));
-		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Aventura"));
-		atraccionesPromocion.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, "Aventura"));
 
 		Promocion promocion = new PromocionAbsoluta(atraccionesPromocion, 100);
 
@@ -50,15 +51,15 @@ public class ResumenUsuarioTests {
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
 
-		resumen.agregarAtraccion(new Atraccion("Torre del Sabor", 150, 2.5, 50, "Degustación"));
-		resumen.agregarAtraccion(new Atraccion("Mirador de Ensueño", 200, 3.0, 40, "Paisaje"));
-		resumen.agregarAtraccion(new Atraccion("Ruta de los Sabores", 180, 2.0, 30, "Degustación"));
-		resumen.agregarAtraccion(new Atraccion("Aventura Extrema", 120, 1.5, 20, "Aventura"));
-		resumen.agregarAtraccion(new Atraccion("Valle Encantado", 160, 2.5, 35, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Torre del Sabor", 150, 2.5, "Degustación"));
+		resumen.agregarAtraccion(new Atraccion("Mirador de Ensueño", 200, 3.0, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Ruta de los Sabores", 180, 2.0, "Degustación"));
+		resumen.agregarAtraccion(new Atraccion("Aventura Extrema", 120, 1.5, "Aventura"));
+		resumen.agregarAtraccion(new Atraccion("Valle Encantado", 160, 2.5, "Paisaje"));
 
-		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Aventura"));
-		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Aventura"));
-		atraccionesPromocion.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, "Aventura"));
 
 		Promocion promocion = new PromocionAbsoluta(atraccionesPromocion, 100);
 
@@ -76,10 +77,10 @@ public class ResumenUsuarioTests {
 		Usuario usuario = new Usuario("Tony Stark", 35.2, 500, "Paisaje");
 		List<Atraccion> atraccionesPromocion = new ArrayList<>();
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
-		Atraccion gratuita = new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Aventura");
+		Atraccion gratuita = new Atraccion("El Sendero de Wakanda", 180, 2.0, "Aventura");
 
-		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Aventura"));
-		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, "Aventura"));
+		atraccionesPromocion.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, "Aventura"));
 		atraccionesPromocion.add(gratuita);
 
 		resumen.agregarPromocion(new PromocionAxB(atraccionesPromocion, gratuita));
@@ -100,7 +101,7 @@ public class ResumenUsuarioTests {
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
 
-		resumen.agregarAtraccion(new Atraccion("Paseo en bote", 150, 3.0, 40, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Paseo en bote", 150, 3.0, "Paisaje"));
 
 		resumen.crearResumenUsuario();
 
@@ -111,21 +112,20 @@ public class ResumenUsuarioTests {
 		assertEquals(gastoEsperado, resumen.getGastoTotal(), 0.01);
 
 	}
-	
-	
+
 	@Test
 	public void atraccionSinPresupuestoAtraccionTest() {
 		Usuario usuario = new Usuario("Clint Barton", 35.2, 50, "Paisaje");
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
 
-		resumen.agregarAtraccion(new Atraccion("Paseo en bote", 150, 3.0, 40, "Paisaje"));
+		resumen.agregarAtraccion(new Atraccion("Paseo en bote", 150, 3.0, "Paisaje"));
 
 		resumen.crearResumenUsuario();
 
 		double tiempoEsperado = 35.2 - 3.0;
 		int gastoEsperado = 50 - 150;
-		
+
 		assertEquals(tiempoEsperado, usuario.getTiempoDisponible(), 0.01);
 		assertEquals(gastoEsperado, usuario.getPresupuesto(), 0.01);
 	}
@@ -144,11 +144,11 @@ public class ResumenUsuarioTests {
 		Usuario usuario = new Usuario("Stephen Strange", 5.5, 300, "Paisaje");
 		List<Atraccion> atracciones = new ArrayList<>();
 
-		atracciones.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Degustación"));
-		atracciones.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Paisaje"));
-		atracciones.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Degustación"));
-		atracciones.add(new Atraccion("La Aventura de Wakanda", 120, 1.5, 20, "Aventura"));
-		atracciones.add(new Atraccion("El Jardín de la Galaxia", 160, 2.8, 35, "Paisaje"));
+		atracciones.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, "Degustación"));
+		atracciones.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, "Paisaje"));
+		atracciones.add(new Atraccion("El Sendero de Wakanda", 180, 2.0, "Degustación"));
+		atracciones.add(new Atraccion("La Aventura de Wakanda", 120, 1.5, "Aventura"));
+		atracciones.add(new Atraccion("El Jardín de la Galaxia", 160, 2.8, "Paisaje"));
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
 
@@ -165,15 +165,15 @@ public class ResumenUsuarioTests {
 		List<Atraccion> atraccionesAbsolutas = new ArrayList<>();
 
 		ResumenUsuario resumen = new ResumenUsuario(usuario);
-		Atraccion gratuita = new Atraccion("El Sendero de Wakanda", 180, 2.0, 30, "Aventura");
+		Atraccion gratuita = new Atraccion("El Sendero de Wakanda", 180, 2.0, "Aventura");
 
-		atraccionesAxB.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, 50, "Aventura"));
-		atraccionesAxB.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, 40, "Aventura"));
+		atraccionesAxB.add(new Atraccion("La Torre de los Vengadores", 150, 2.5, "Aventura"));
+		atraccionesAxB.add(new Atraccion("El Horizonte de Asgard", 200, 3.0, "Aventura"));
 		atraccionesAxB.add(gratuita);
 
-		atraccionesAbsolutas.add(new Atraccion("Mirador Asgardiano", 200, 0.5, 15, "Paisaje"));
-		atraccionesAbsolutas.add(new Atraccion("Valle Encantado ", 50, 1.0, 30, "Paisaje"));
-		atraccionesAbsolutas.add(new Atraccion("Rincón de Maravillas", 130, 4.5, 12, "Paisaje"));
+		atraccionesAbsolutas.add(new Atraccion("Mirador Asgardiano", 200, 0.5, "Paisaje"));
+		atraccionesAbsolutas.add(new Atraccion("Valle Encantado ", 50, 1.0, "Paisaje"));
+		atraccionesAbsolutas.add(new Atraccion("Rincón de Maravillas", 130, 4.5, "Paisaje"));
 
 		Promocion absoluta = new PromocionAbsoluta(atraccionesAbsolutas, 70);
 		Promocion axb = new PromocionAxB(atraccionesAxB, gratuita);
